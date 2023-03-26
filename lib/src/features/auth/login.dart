@@ -26,25 +26,23 @@ class _LoginState extends State<Login> {
       "username": username.text,
       "password": password.text,
     });
-      if (response.statusCode == 200){
-        List<UserInfo> data = [];
-          response.data.forEach((element) {
-            data.add(UserInfo.fromJson(element));
-          });
-        setState(() {
-        userData = data;
-
+    if (response.statusCode == 200) {
+      List<UserInfo> data = [];
+      response.data.forEach((element) {
+        data.add(UserInfo.fromJson(element));
       });
-
-      }
-      if (userData != null && userData!.isNotEmpty) {
-        goToMain();
-      } else {
-        noti(context);
-      }
+      setState(() {
+        userData = data;
+      });
+    }
+    if (userData != null && userData!.isNotEmpty) {
+      goToMain();
+    } else {
+      noti(context);
+    }
 
     print(response);
-  } 
+  }
 
   void noti(BuildContext context) {
     showCupertinoDialog(
@@ -52,17 +50,17 @@ class _LoginState extends State<Login> {
         builder: (BuildContext ctx) {
           return CupertinoAlertDialog(
             title: Text(
-              'แจ้งเตือนเข้าสู่ระบบ',
+              'ระบบเเจ้งเตือน',
               style: TextStyle(
                   color: Color.fromARGB(255, 65, 57, 52),
-                  fontFamily: 'anupark',
+                  fontFamily: 'donut',
                   fontSize: 21),
             ),
             content: Text(
               "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง",
               style: TextStyle(
                   color: Color.fromARGB(255, 55, 48, 43),
-                  fontFamily: 'anupark',
+                  fontFamily: 'donut',
                   fontSize: 17),
             ),
             actions: [
@@ -75,9 +73,8 @@ class _LoginState extends State<Login> {
                 },
                 child: const Text(
                   'ตกลง',
-                  style: TextStyle(
-                    color: Color(0xff536830),
-                  ),
+                  style:
+                      TextStyle(color: Color(0xff536830), fontFamily: 'donut'),
                 ),
                 isDefaultAction: true,
                 isDestructiveAction: true,
@@ -89,15 +86,15 @@ class _LoginState extends State<Login> {
   }
 
   goToMain() {
-Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
-        MaterialPageRoute(
-          settings: RouteSettings(name: "/MenuBar"),
-          builder: (BuildContext context) {
-            return NavigationMenuBar();
-          },
-        ),
-        (_) => false,
-      );
+    Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+      MaterialPageRoute(
+        settings: RouteSettings(name: "/MenuBar"),
+        builder: (BuildContext context) {
+          return NavigationMenuBar();
+        },
+      ),
+      (_) => false,
+    );
   }
 
   Widget _entryFieldUsername(String title, {bool isPassword = false}) {
@@ -109,9 +106,9 @@ Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
           Text(
             title,
             style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-                color: Color(0xff6E8785)),
+                fontFamily: 'donut',
+                fontSize: 20,
+                color: Color.fromARGB(255, 255, 255, 255)),
           ),
           SizedBox(
             height: 10,
@@ -145,9 +142,9 @@ Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
           Text(
             title,
             style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-                color: Color(0xff6E8785)),
+                fontFamily: 'donut',
+                fontSize: 20,
+                color: Color.fromARGB(255, 255, 255, 255)),
           ),
           SizedBox(
             height: 10,
@@ -193,13 +190,16 @@ Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
             gradient: LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
-                colors: [Color(0xff6E8786), Color(0xff6E8786)])),
+                colors: [
+                  Color.fromARGB(193, 255, 113, 243),
+                  Color.fromARGB(255, 220, 47, 255)
+                ])),
         child: Text(
-          'ลงชื่อเข้าใช้งานระบบ',
+          'เข้าสู่ระบบ',
           style: TextStyle(
             fontSize: 20,
             color: Colors.white,
-            fontFamily: 'anupark',
+            fontFamily: 'donut',
           ),
         ),
       ),
@@ -210,12 +210,12 @@ Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-        text: 'ลงชื่อเข้าใช้ระบบ',
+        text: 'เข้าสู่ระบบสมาชิก',
         style: TextStyle(
-            fontFamily: 'anupark',
-            fontSize: 30,
+            fontFamily: 'donut',
+            fontSize: 40,
             fontWeight: FontWeight.w700,
-            color: Color.fromARGB(255, 0, 255, 13)),
+            color: Color.fromARGB(255, 255, 255, 255)),
       ),
     );
   }
@@ -223,7 +223,7 @@ Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
   Widget _emailPasswordWidget() {
     return Column(
       children: <Widget>[
-        _entryFieldUsername("ผู้ใช้งาน"),
+        _entryFieldUsername("ชื่อผู้ใช้งาน"),
         _entryFieldPassword("รหัสผ่าน", isPassword: true),
       ],
     );
@@ -236,7 +236,8 @@ Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("asset/images/Test1.jpg"), fit: BoxFit.cover)),
+              image: AssetImage("asset/images/Gift4YouBG.jpg"),
+              fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(

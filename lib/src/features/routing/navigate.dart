@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:giftforyou/src/features/auth/register.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../home/home.dart';
 
@@ -30,40 +31,40 @@ class _NavigationMenuBarState extends State<NavigationMenuBar> {
       PersistentBottomNavBarItem(
         contentPadding: 0.0,
         inactiveColorSecondary: CupertinoColors.black,
-        icon: Icon(CupertinoIcons.house, size: 23),
-        title: ("หน้าหลัก"),
+        icon: Icon(CupertinoIcons.house, size: 25),
+        title: ("หน้าเเรก"),
         iconSize: 50,
-        activeColorPrimary: Color(0xff6E8785),
-        inactiveColorPrimary: Color(0xff6E8785),
+        activeColorPrimary: Color.fromARGB(255, 247, 247, 247),
+        inactiveColorPrimary: Color.fromARGB(255, 0, 0, 0),
       ),
       PersistentBottomNavBarItem(
         contentPadding: 0.0,
-        icon: Icon(CupertinoIcons.arrow_up_right_square, size: 23),
-        title: ("รออนุมัติ"),
-        activeColorPrimary: Color(0xff6E8785),
-        inactiveColorPrimary: Color(0xff6E8785),
+        icon: Icon(CupertinoIcons.search , size: 25),
+        title: ("ดูหมวดหมู่สินค้า"),
+        activeColorPrimary: Color.fromARGB(255, 248, 248, 248),
+        inactiveColorPrimary: Color.fromARGB(255, 0, 0, 0),
       ),
       PersistentBottomNavBarItem(
         contentPadding: 0.0,
         // icon: Icon(CupertinoIcons.clear_circled),
-        icon: Icon(CupertinoIcons.alarm, size: 23),
-        title: ("ปฏิเสธ"),
-        activeColorPrimary: Color(0xff6E8785),
-        inactiveColorPrimary: Color(0xff6E8785),
+        icon: Icon(CupertinoIcons.cart_fill, size: 25),
+        title: ("เเนะนำของขวัญ"),
+        activeColorPrimary: Color.fromARGB(255, 249, 250, 250),
+        inactiveColorPrimary: Color.fromARGB(255, 2, 0, 0),
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.person_crop_circle, size: 23),
+        icon: Icon(CupertinoIcons.person, size: 25),
         contentPadding: 0.0,
         title: ("โปรไฟล์"),
-        activeColorPrimary: Color(0xff6E8785),
-        inactiveColorPrimary: Color(0xff6E8785),
+        activeColorPrimary: Color.fromARGB(255, 255, 255, 255),
+        inactiveColorPrimary: Color.fromARGB(255, 7, 0, 0),
       ),
     ];
   }
 
   List<Widget> _buildScreens() {
     return [
-      Home(), Home(), Home(), Home()
+      Home(), Register(), Home(), Home()
       // MainList(),
       // Test()
     ];
@@ -113,7 +114,7 @@ class _NavigationMenuBarState extends State<NavigationMenuBar> {
         duration: Duration(milliseconds: 250),
       ),
       navBarStyle:
-          NavBarStyle.style13, // Choose the nav bar style with this property.
+          NavBarStyle.style7, // Choose the nav bar style with this property.
     );
   }
 }

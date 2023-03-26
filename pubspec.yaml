@@ -93,3 +93,12 @@ flutter:
 
   assets:
     - asset/images/
+
+  fonts:
+    - family: donut
+      fonts:
+        - asset: asset/fonts/MNDonutBold.ttf
+
+    - family: blabla
+      fonts:
+        - asset: asset/fonts/KanchaBlabla.ttf
