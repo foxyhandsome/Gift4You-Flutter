@@ -149,8 +149,8 @@ class _ImagePickerCustomState extends State<ImagePickerCustom> {
               ),
             ),
             onPressed: () {
-              widget.validate = false;
-              Navigator.pop(context);
+              // widget.validate = false;
+              // Navigator.pop(context);
               selectImageSource(ImageSource.gallery);
             },
           )

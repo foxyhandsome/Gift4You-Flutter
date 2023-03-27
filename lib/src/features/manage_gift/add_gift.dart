@@ -17,7 +17,9 @@ class _AddGritState extends State<AddGrit> {
     return SafeArea(
       child: ImagePickerCustom(
         validate: false,
-        onSelected: (base64, fileName) async {},
+        onSelected: (base64, fileName) async {
+          print(base64);
+        },
       ),
     );
   }
