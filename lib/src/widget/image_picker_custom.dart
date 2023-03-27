@@ -124,73 +124,38 @@ class _ImagePickerCustomState extends State<ImagePickerCustom> {
       chooseFile(imageSource);
     };
 
-    if (Platform.isIOS) {
-      showCupertinoModalPopup(
-        context: context,
-        builder: (context) => CupertinoActionSheet(
-          actions: [
-            CupertinoActionSheetAction(
-              child: Text(
-                'ถ่ายภาพ',
-                style: TextStyle(
-                  fontFamily: 'anupark',
-                ),
-              ),
-              onPressed: () {
-                widget.validate = false;
-                Navigator.pop(context);
-                selectImageSource(ImageSource.camera);
-              },
-            ),
-            CupertinoActionSheetAction(
-              child: Text(
-                'เลือกภาพถ่าย',
-                style: TextStyle(
-                  fontFamily: 'anupark',
-                ),
-              ),
-              onPressed: () {
-                widget.validate = false;
-                Navigator.pop(context);
-                selectImageSource(ImageSource.gallery);
-              },
-            )
-          ],
-        ),
-      );
-    } else {
-      showModalBottomSheet(
-        context: context,
-        builder: (context) => Wrap(children: [
-          ListTile(
-            leading: Icon(Icons.camera_alt),
-            title: Text(
+    showCupertinoModalPopup(
+      context: context,
+      builder: (context) => CupertinoActionSheet(
+        actions: [
+          CupertinoActionSheetAction(
+            child: Text(
               'ถ่ายภาพ',
               style: TextStyle(
                 fontFamily: 'anupark',
               ),
             ),
-            onTap: () {
+            onPressed: () {
               widget.validate = false;
               Navigator.pop(context);
               selectImageSource(ImageSource.camera);
             },
           ),
-          ListTile(
-            leading: Icon(Icons.photo_album),
-            title: Text(
+          CupertinoActionSheetAction(
+            child: Text(
               'เลือกภาพถ่าย',
               style: TextStyle(
                 fontFamily: 'anupark',
               ),
             ),
-            onTap: () {
-              // Navigator.pop(context);
-              // selectImageSource(ImageSource.gallery);
+            onPressed: () {
+              widget.validate = false;
+              Navigator.pop(context);
+              selectImageSource(ImageSource.gallery);
             },
-          ),
-        ]),
-      );
-    }
+          )
+        ],
+      ),
+    );
   }
 }
