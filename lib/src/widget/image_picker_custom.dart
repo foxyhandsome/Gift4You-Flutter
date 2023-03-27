@@ -105,8 +105,8 @@ class _ImagePickerCustomState extends State<ImagePickerCustom> {
     final ImagePicker picker = ImagePicker();
     final XFile? pickedFile = await picker.pickImage(
       source: source,
-      maxWidth: 500,
-      imageQuality: 100,
+      maxWidth: 400,
+      imageQuality: 80,
     );
     if (pickedFile == null) return;
     final bytes = await pickedFile.readAsBytes();
@@ -149,8 +149,8 @@ class _ImagePickerCustomState extends State<ImagePickerCustom> {
               ),
             ),
             onPressed: () {
-              // widget.validate = false;
-              // Navigator.pop(context);
+              widget.validate = false;
+              Navigator.pop(context);
               selectImageSource(ImageSource.gallery);
             },
           )

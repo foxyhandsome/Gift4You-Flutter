@@ -70,28 +70,7 @@ class _HomeState extends State<Home> {
                       height: height / 4,
                     ),
                     /*Search Section*/
-                    Container(
-                      margin:
-                          const EdgeInsets.only(top: 48, right: 24, left: 24),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          hintText: "Search",
-                          enabledBorder: CustomBorder.enabledBorder.copyWith(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(24))),
-                          contentPadding: EdgeInsets.only(
-                              top: 16, left: 12, right: 12, bottom: 8),
-                          border: CustomBorder.enabledBorder.copyWith(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(24))),
-                          enabled: false,
-                          filled: true,
-                        ),
-                      ),
-                    ),
+
                     /*Slider Section*/
                     Container(
                         height: (height / 4) + 75,

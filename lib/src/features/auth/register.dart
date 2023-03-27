@@ -487,7 +487,7 @@ class _RegisterState extends State<Register> {
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("asset/images/Gift4YouBG.jpg"),
+              image: AssetImage("assets/images/Gift4YouBG.jpg"),
               fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,

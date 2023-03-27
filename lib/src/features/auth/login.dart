@@ -37,11 +37,11 @@ class _LoginState extends State<Login> {
         userData = data;
       });
     }
-      if (userData != null && userData!.isNotEmpty) {
-        goToMain();
-      } else {
-        noti(context);
-      }
+    if (userData != null && userData!.isNotEmpty) {
+      goToMain();
+    } else {
+      noti(context);
+    }
 
     print(response);
   }
@@ -208,7 +208,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-gotoregister () {
+  gotoregister() {
     PersistentNavBarNavigator.pushNewScreen(
       context,
       screen: Register(),
@@ -216,7 +216,8 @@ gotoregister () {
       pageTransitionAnimation: PageTransitionAnimation.cupertino,
     ).then((value) => {});
   }
-   Widget _RegisterButton() {
+
+  Widget _RegisterButton() {
     return InkWell(
       onTap: () {
         gotoregister();
@@ -283,7 +284,7 @@ gotoregister () {
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("asset/images/Gift4YouBG.jpg"),
+              image: AssetImage("assets/images/Gift4YouBG.jpg"),
               fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,

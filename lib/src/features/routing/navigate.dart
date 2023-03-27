@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:giftforyou/src/features/auth/register.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import '../../../main.dart';
 import '../home/home.dart';
 import '../manage_gift/add_gift.dart';
+import '../shop/home_page.dart';
+import '../shop/shopping_cart_page.dart';
 
 class NavigationMenuBar extends StatefulWidget {
   final String? selectPage;
@@ -63,7 +66,7 @@ class _NavigationMenuBarState extends State<NavigationMenuBar> {
 
   List<Widget> _buildScreens() {
     return [
-      Home(), AddGrit(), Home(), Home()
+      Home(), AddGrit(), MyHomePage(title: "eee"), Home()
       // MainList(),
       // Test()
     ];
