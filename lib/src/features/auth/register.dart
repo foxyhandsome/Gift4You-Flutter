@@ -36,6 +36,7 @@ class _RegisterState extends State<Register> {
       "email": email.text,
       "tel": tel.text,
       "role_id": userType == 0 ? "2" : "3",
+      "user_type" : userType == 0 ? "USER" : "MARKET"
     });
     if (response.statusCode == 200) {
       goToMain();
@@ -459,7 +460,7 @@ class _RegisterState extends State<Register> {
           groupValue: userType,
           onChanged: (value, name) {
             setState(() {
-              sex = value;
+              userType = value;
             });
           },
         ),
@@ -472,7 +473,7 @@ class _RegisterState extends State<Register> {
           groupValue: userType,
           onChanged: (value, name) {
             setState(() {
-              sex = value;
+              userType = value;
             });
           },
         ),

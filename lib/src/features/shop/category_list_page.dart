@@ -15,38 +15,38 @@ class _CategoryListPageState extends State<CategoryListPage> {
       Color(0xffFCE183),
       Color(0xffF68D7F),
       'ไอที',
-      'assets/shoe_thumb_2.png',
+      'assets/images/it.png',
     ),
     Category(
       Color(0xffF749A2),
       Color(0xffFF7375),
       'เสื้อผ้า',
-      'assets/shoe_thumb_2.png',
+      'assets/images/Shirt.png',
     ),
     Category(
       Color(0xff00E9DA),
       Color(0xff5189EA),
-      'Fashion',
-      'assets/shoe_thumb_2.png',
+      'เครื่องประดับ',
+      'assets/images/jewelry.png',
     ),
     Category(
       Color(0xffAF2D68),
       Color(0xff632376),
-      'เครื่องประดับ',
-      'assets/shoe_thumb_2.png',
+      'ของเล่น',
+      'assets/images/toy.png',
     ),
     Category(
       Color(0xff36E892),
       Color(0xff33B2B9),
-      'Beauty',
-      'assets/shoe_thumb_2.png',
+      'ดอกไม้',
+      'assets/images/flower.png',
     ),
-    Category(
-      Color(0xffF123C4),
-      Color(0xff668CEA),
-      'Appliances',
-      'assets/shoe_thumb_2.png',
-    ),
+    // Category(
+    //   Color(0xffF123C4),
+    //   Color(0xff668CEA),
+    //   'Appliances',
+    //   'assets/shoe_thumb_2.png',
+    // ),
   ];
 
   List<Category> searchResults = [];
@@ -76,7 +76,7 @@ class _CategoryListPageState extends State<CategoryListPage> {
                   'หมวดหมู่สินค้า',
                   style: TextStyle(
                     color: Colors.amber,
-                    fontSize: 22,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
