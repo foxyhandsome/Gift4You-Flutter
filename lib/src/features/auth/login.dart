@@ -38,12 +38,42 @@ class _LoginState extends State<Login> {
       });
     }
     if (userData != null && userData!.isNotEmpty) {
-      goToMain();
+      if (userData![0].userType == "USER") {
+        goToMainUSER();
+      } else if (userData![0].userType == "ADMIN") {
+        goToMainUSER();
+      } else {
+        goToMainMARKET();
+      }
     } else {
       noti(context);
     }
 
     print(response);
+  }
+
+  goToMainUSER() {
+    Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+      MaterialPageRoute(
+        settings: RouteSettings(name: "/MenuBar"),
+        builder: (BuildContext context) {
+          return NavigationMenuBar();
+        },
+      ),
+      (_) => false,
+    );
+  }
+
+  goToMainMARKET() {
+    Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+      MaterialPageRoute(
+        settings: RouteSettings(name: "/MenuBar"),
+        builder: (BuildContext context) {
+          return NavigationMenuBar();
+        },
+      ),
+      (_) => false,
+    );
   }
 
   void noti(BuildContext context) {
@@ -85,18 +115,6 @@ class _LoginState extends State<Login> {
             ],
           );
         });
-  }
-
-  goToMain() {
-    Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
-      MaterialPageRoute(
-        settings: RouteSettings(name: "/MenuBar"),
-        builder: (BuildContext context) {
-          return NavigationMenuBar();
-        },
-      ),
-      (_) => false,
-    );
   }
 
   Widget _entryFieldUsername(String title, {bool isPassword = false}) {
