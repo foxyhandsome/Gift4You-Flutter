@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:giftforyou/src/features/auth/model/user_register.dart';
 
+import '../../widget/custom_radio.dart';
 import '../routing/navigate.dart';
 import 'model/user_info.dart';
 
@@ -21,22 +22,20 @@ class _RegisterState extends State<Register> {
   TextEditingController email = new TextEditingController();
   TextEditingController tel = new TextEditingController();
   TextEditingController role_id = new TextEditingController();
-
+  int sex = 0;
+  int userType = 0;
   final dio = Dio();
   List<UserInfo>? userData = [];
 
   login() async {
-    print(username.text);
-    print(password.text);
-
     final response = await dio.post('http://192.168.1.38:5000/register', data: {
       "username": username.text,
       "password": password.text,
-      "gender": gender.text,
+      "gender": sex == 0 ? "ชาย" : "หญิง",
       "fullname": fullname.text,
       "email": email.text,
       "tel": tel.text,
-      "role_id": role_id.text,
+      "role_id": userType == 0 ? "2" : "3",
     });
     if (response.statusCode == 200) {
       goToMain();
@@ -403,14 +402,80 @@ class _RegisterState extends State<Register> {
 
   Widget _emailPasswordWidget() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         _entryFieldUsername("ชื่อผู้ใช้งาน"),
         _entryFieldPassword("รหัสผ่าน", isPassword: true),
-        _entryFieldGender("เพศ"),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Text(
+            "เลือกเพศ",
+            style: TextStyle(
+                fontFamily: 'donut',
+                fontSize: 20,
+                color: Color.fromARGB(255, 255, 255, 255)),
+          ),
+        ),
+        CustomRadio(
+          name: 'ชาย',
+          value: 0,
+          groupValue: sex,
+          onChanged: (value, name) {
+            setState(() {
+              sex = value;
+            });
+          },
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        CustomRadio(
+          name: 'หญิง',
+          value: 1,
+          groupValue: sex,
+          onChanged: (value, name) {
+            setState(() {
+              sex = value;
+            });
+          },
+        ),
         _entryFieldFullname("ชื่อ-นามสกุล"),
         _entryFieldEmail("อีเมล"),
         _entryFieldTel("เบอร์โทรศัพท์"),
-        _entryFieldRole_id("สมัครเป็น"),
+        // _entryFieldRole_id("สมัครเป็น"),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Text(
+            "ประเภทผู้เข้าใช้งาน",
+            style: TextStyle(
+                fontFamily: 'donut',
+                fontSize: 20,
+                color: Color.fromARGB(255, 255, 255, 255)),
+          ),
+        ),
+        CustomRadio(
+          name: 'ผู้ใช้',
+          value: 0,
+          groupValue: userType,
+          onChanged: (value, name) {
+            setState(() {
+              sex = value;
+            });
+          },
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        CustomRadio(
+          name: 'ร้านค้า',
+          value: 1,
+          groupValue: userType,
+          onChanged: (value, name) {
+            setState(() {
+              sex = value;
+            });
+          },
+        ),
       ],
     );
   }
@@ -439,6 +504,7 @@ class _RegisterState extends State<Register> {
                 _emailPasswordWidget(),
                 SizedBox(height: 30),
                 _submitButton(),
+                SizedBox(height: 40),
               ],
             ),
           ),
