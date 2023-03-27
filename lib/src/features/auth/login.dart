@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:giftforyou/src/features/auth/register.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../routing/navigate.dart';
 import 'model/user_info.dart';
@@ -35,11 +37,11 @@ class _LoginState extends State<Login> {
         userData = data;
       });
     }
-    if (userData != null && userData!.isNotEmpty) {
-      goToMain();
-    } else {
-      noti(context);
-    }
+      if (userData != null && userData!.isNotEmpty) {
+        goToMain();
+      } else {
+        noti(context);
+      }
 
     print(response);
   }
@@ -206,6 +208,51 @@ class _LoginState extends State<Login> {
     );
   }
 
+gotoregister () {
+    PersistentNavBarNavigator.pushNewScreen(
+      context,
+      screen: Register(),
+      withNavBar: false,
+      pageTransitionAnimation: PageTransitionAnimation.cupertino,
+    ).then((value) => {});
+  }
+   Widget _RegisterButton() {
+    return InkWell(
+      onTap: () {
+        gotoregister();
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.symmetric(vertical: 6),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                  color: Colors.grey.shade200,
+                  offset: Offset(2, 4),
+                  blurRadius: 5,
+                  spreadRadius: 2)
+            ],
+            gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [
+                  Color.fromARGB(193, 255, 113, 243),
+                  Color.fromARGB(255, 220, 47, 255)
+                ])),
+        child: Text(
+          'สมัครสมาชิก',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+            fontFamily: 'donut',
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _title() {
     return RichText(
       textAlign: TextAlign.center,
@@ -253,6 +300,8 @@ class _LoginState extends State<Login> {
                 _emailPasswordWidget(),
                 SizedBox(height: 30),
                 _submitButton(),
+                SizedBox(height: 30),
+                _RegisterButton(),
               ],
             ),
           ),

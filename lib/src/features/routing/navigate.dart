@@ -64,7 +64,7 @@ class _NavigationMenuBarState extends State<NavigationMenuBar> {
 
   List<Widget> _buildScreens() {
     return [
-      Home(), Register(), Home(), Home()
+      Home(), Home(), Home(), Home()
       // MainList(),
       // Test()
     ];

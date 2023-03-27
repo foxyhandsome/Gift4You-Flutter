@@ -37,21 +37,9 @@ class _RegisterState extends State<Register> {
       "email": email.text,
       "tel": tel.text,
       "role_id": role_id.text,
-
     });
-    // if (response.statusCode == 200) {
-    //   List<UserRegister> data = [];
-    //   response.data.forEach((element) {
-    //     data.add(UserRegister.fromJson(element));
-    //   });
-    //   setState(() {
-    //     userData = data;
-    //   });
-    // }
-    if (userData != null && userData!.isNotEmpty) {
+    if (response.statusCode == 200) {
       goToMain();
-    } else {
-      noti(context);
     }
 
     print(response);
@@ -423,7 +411,6 @@ class _RegisterState extends State<Register> {
         _entryFieldEmail("อีเมล"),
         _entryFieldTel("เบอร์โทรศัพท์"),
         _entryFieldRole_id("สมัครเป็น"),
-
       ],
     );
   }
