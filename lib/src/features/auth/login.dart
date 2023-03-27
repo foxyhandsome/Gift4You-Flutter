@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:giftforyou/src/features/auth/register.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../market/market_list.dart';
 import '../routing/navigate.dart';
 import 'model/user_info.dart';
 
@@ -69,7 +70,7 @@ class _LoginState extends State<Login> {
       MaterialPageRoute(
         settings: RouteSettings(name: "/MenuBar"),
         builder: (BuildContext context) {
-          return NavigationMenuBar();
+          return MarketList();
         },
       ),
       (_) => false,
