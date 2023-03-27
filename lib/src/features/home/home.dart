@@ -29,35 +29,31 @@ class _HomeState extends State<Home> {
 
   void sliderImage() {
     listImage.add(
-        "https://postfamily.thailandpost.com/wp-content/uploads/2019/12/post-3-10.jpg");
-    listImage.add(
-        "https://postfamily.thailandpost.com/wp-content/uploads/2019/12/post-3-10.jpg");
-    listImage.add(
-        "https://postfamily.thailandpost.com/wp-content/uploads/2019/12/post-3-10.jpg");
+        "assets/images/gift4you.png");
   }
 
   void shoesImage() {
     listShoesImage.add(
-        "https://png.pngtree.com/png-clipart/20210128/ourmid/pngtree-color-flat-gift-box-png-image_2805845.jpg");
+        "assets/images/gift4you.png");
     listShoesImage.add(
-        "https://png.pngtree.com/png-clipart/20210128/ourmid/pngtree-color-flat-gift-box-png-image_2805845.jpg");
+        "assets/images/gift4you.png");
     listShoesImage.add(
-        "https://png.pngtree.com/png-clipart/20210128/ourmid/pngtree-color-flat-gift-box-png-image_2805845.jpg");
+        "assets/images/gift4you.png");
     listShoesImage.add(
-        "https://png.pngtree.com/png-clipart/20210128/ourmid/pngtree-color-flat-gift-box-png-image_2805845.jpg");
+        "assets/images/gift4you.png");
     listShoesImage.add(
-        "https://png.pngtree.com/png-clipart/20210128/ourmid/pngtree-color-flat-gift-box-png-image_2805845.jpg");
+        "assets/images/gift4you.png");
     listShoesImage.add(
-        "https://png.pngtree.com/png-clipart/20210128/ourmid/pngtree-color-flat-gift-box-png-image_2805845.jpg");
+        "assets/images/gift4you.png");
     listShoesImage.add(
-        "https://png.pngtree.com/png-clipart/20210128/ourmid/pngtree-color-flat-gift-box-png-image_2805845.jpg");
+        "assets/images/gift4you.png");
   }
 
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: Color.fromARGB(241, 211, 145, 255),
       body: Builder(
         builder: (context) {
           return SingleChildScrollView(
@@ -104,18 +100,22 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding: const EdgeInsets.only(top: 16, left: 16),
                         child: Text(
-                          "GROUP BY",
+                          "สินค้า",
                           style: CustomTextStyle.textFormFieldSemiBold
-                              .copyWith(color: Colors.black),
+                              .copyWith(color: Color.fromARGB(255, 0, 0, 0),
+                            fontFamily: 'donut',
+                            fontSize: 23), 
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 10),
                         child: Row(
                           children: <Widget>[
-                            Text("SEE ALL",
+                            Text("ดูทั้งหมด",
                                 style: CustomTextStyle.textFormFieldSemiBold
-                                    .copyWith(color: Colors.grey.shade700)),
+                                    .copyWith(color: Color.fromARGB(255, 0, 0, 0),
+                                fontFamily: 'donut',
+                                fontSize: 18)),
                             Icon(Icons.arrow_forward),
                             Utils.getSizedBox(width: 16),
                           ],
@@ -146,18 +146,23 @@ class _HomeState extends State<Home> {
                     Padding(
                       padding: const EdgeInsets.only(top: 16, left: 16),
                       child: Text(
-                        "MOST BIG",
+                        "ร้านค้า",
                         style: CustomTextStyle.textFormFieldSemiBold
-                            .copyWith(color: Colors.black),
+                            .copyWith(color: Color.fromARGB(255, 0, 0, 0),
+                            fontFamily: 'donut',
+                            fontSize: 23
+                            ),
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 10),
                       child: Row(
                         children: <Widget>[
-                          Text("SEE ALL",
+                          Text("ดูทั้งหมด",
                               style: CustomTextStyle.textFormFieldSemiBold
-                                  .copyWith(color: Colors.grey.shade700)),
+                                  .copyWith(color: Color.fromARGB(255, 0, 0, 0),
+                                  fontFamily: 'donut',
+                                  fontSize: 18)),
                           Icon(Icons.arrow_forward),
                           Utils.getSizedBox(width: 16),
                         ],
@@ -195,7 +200,7 @@ class _HomeState extends State<Home> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(14)),
             image:
-                DecorationImage(image: NetworkImage(image), fit: BoxFit.cover)),
+                DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
       ),
     );
   }
@@ -221,7 +226,7 @@ class _HomeState extends State<Home> {
               height: 200,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage(image),
+                    image: AssetImage(image),
                   ),
                   color: Colors.blue.shade200,
                   borderRadius: BorderRadius.only(
@@ -290,7 +295,7 @@ class _HomeState extends State<Home> {
                   height: 200,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(image),
+                        image: AssetImage(image),
                       ),
                       color: Colors.teal.shade200,
                       borderRadius: BorderRadius.only(

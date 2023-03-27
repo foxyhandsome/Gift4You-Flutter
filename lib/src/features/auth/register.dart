@@ -387,6 +387,7 @@ class _RegisterState extends State<Register> {
     );
   }
 
+
   Widget _title() {
     return RichText(
       textAlign: TextAlign.center,
@@ -488,7 +489,7 @@ class _RegisterState extends State<Register> {
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/Gift4YouBG.jpg"),
+              image: AssetImage("assets/images/Gift4YouBG.png"),
               fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,

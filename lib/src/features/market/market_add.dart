@@ -102,7 +102,7 @@ class _MarketAddState extends State<MarketAdd> {
     );
   }
 
-  Widget _entryFieldUsername(String title, {bool isPassword = false}) {
+  Widget _entryFieldProductName(String title, {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -138,7 +138,7 @@ class _MarketAddState extends State<MarketAdd> {
     );
   }
 
-  Widget _entryFieldPassword(String title, {bool isPassword = false}) {
+  Widget _entryFieldPrice(String title, {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -174,7 +174,7 @@ class _MarketAddState extends State<MarketAdd> {
     );
   }
 
-  Widget _entryFieldGender(String title, {bool isPassword = false}) {
+  Widget _entryFieldDetail(String title, {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -210,149 +210,149 @@ class _MarketAddState extends State<MarketAdd> {
     );
   }
 
-  Widget _entryFieldFullname(String title, {bool isPassword = false}) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            title,
-            style: TextStyle(
-                fontFamily: 'donut',
-                fontSize: 20,
-                color: Color.fromARGB(255, 255, 255, 255)),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          TextField(
-              controller: fullname,
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(left: 10),
-                  border: InputBorder.none,
-                  fillColor: Colors.white,
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Color(0xff6E8786)),
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xffE2E8F0)),
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
-                  ),
-                  filled: true))
-        ],
-      ),
-    );
-  }
+  // Widget _entryFieldFullname(String title, {bool isPassword = false}) {
+  //   return Container(
+  //     margin: EdgeInsets.symmetric(vertical: 10),
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: <Widget>[
+  //         Text(
+  //           title,
+  //           style: TextStyle(
+  //               fontFamily: 'donut',
+  //               fontSize: 20,
+  //               color: Color.fromARGB(255, 255, 255, 255)),
+  //         ),
+  //         SizedBox(
+  //           height: 10,
+  //         ),
+  //         TextField(
+  //             controller: fullname,
+  //             decoration: InputDecoration(
+  //                 contentPadding: EdgeInsets.only(left: 10),
+  //                 border: InputBorder.none,
+  //                 fillColor: Colors.white,
+  //                 focusedBorder: OutlineInputBorder(
+  //                   borderSide: const BorderSide(color: Color(0xff6E8786)),
+  //                   borderRadius: BorderRadius.all(Radius.circular(6)),
+  //                 ),
+  //                 enabledBorder: OutlineInputBorder(
+  //                   borderSide: BorderSide(color: Color(0xffE2E8F0)),
+  //                   borderRadius: BorderRadius.all(Radius.circular(6)),
+  //                 ),
+  //                 filled: true))
+  //       ],
+  //     ),
+  //   );
+  // }
 
-  Widget _entryFieldEmail(String title, {bool isPassword = false}) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            title,
-            style: TextStyle(
-                fontFamily: 'donut',
-                fontSize: 20,
-                color: Color.fromARGB(255, 255, 255, 255)),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          TextField(
-              controller: email,
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(left: 10),
-                  border: InputBorder.none,
-                  fillColor: Colors.white,
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Color(0xff6E8786)),
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xffE2E8F0)),
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
-                  ),
-                  filled: true))
-        ],
-      ),
-    );
-  }
+  // Widget _entryFieldEmail(String title, {bool isPassword = false}) {
+  //   return Container(
+  //     margin: EdgeInsets.symmetric(vertical: 10),
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: <Widget>[
+  //         Text(
+  //           title,
+  //           style: TextStyle(
+  //               fontFamily: 'donut',
+  //               fontSize: 20,
+  //               color: Color.fromARGB(255, 255, 255, 255)),
+  //         ),
+  //         SizedBox(
+  //           height: 10,
+  //         ),
+  //         TextField(
+  //             controller: email,
+  //             decoration: InputDecoration(
+  //                 contentPadding: EdgeInsets.only(left: 10),
+  //                 border: InputBorder.none,
+  //                 fillColor: Colors.white,
+  //                 focusedBorder: OutlineInputBorder(
+  //                   borderSide: const BorderSide(color: Color(0xff6E8786)),
+  //                   borderRadius: BorderRadius.all(Radius.circular(6)),
+  //                 ),
+  //                 enabledBorder: OutlineInputBorder(
+  //                   borderSide: BorderSide(color: Color(0xffE2E8F0)),
+  //                   borderRadius: BorderRadius.all(Radius.circular(6)),
+  //                 ),
+  //                 filled: true))
+  //       ],
+  //     ),
+  //   );
+  // }
 
-  Widget _entryFieldTel(String title, {bool isPassword = false}) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            title,
-            style: TextStyle(
-                fontFamily: 'donut',
-                fontSize: 20,
-                color: Color.fromARGB(255, 255, 255, 255)),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          TextField(
-              controller: tel,
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(left: 10),
-                  border: InputBorder.none,
-                  fillColor: Colors.white,
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Color(0xff6E8786)),
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xffE2E8F0)),
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
-                  ),
-                  filled: true))
-        ],
-      ),
-    );
-  }
+  // Widget _entryFieldTel(String title, {bool isPassword = false}) {
+  //   return Container(
+  //     margin: EdgeInsets.symmetric(vertical: 10),
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: <Widget>[
+  //         Text(
+  //           title,
+  //           style: TextStyle(
+  //               fontFamily: 'donut',
+  //               fontSize: 20,
+  //               color: Color.fromARGB(255, 255, 255, 255)),
+  //         ),
+  //         SizedBox(
+  //           height: 10,
+  //         ),
+  //         TextField(
+  //             controller: tel,
+  //             decoration: InputDecoration(
+  //                 contentPadding: EdgeInsets.only(left: 10),
+  //                 border: InputBorder.none,
+  //                 fillColor: Colors.white,
+  //                 focusedBorder: OutlineInputBorder(
+  //                   borderSide: const BorderSide(color: Color(0xff6E8786)),
+  //                   borderRadius: BorderRadius.all(Radius.circular(6)),
+  //                 ),
+  //                 enabledBorder: OutlineInputBorder(
+  //                   borderSide: BorderSide(color: Color(0xffE2E8F0)),
+  //                   borderRadius: BorderRadius.all(Radius.circular(6)),
+  //                 ),
+  //                 filled: true))
+  //       ],
+  //     ),
+  //   );
+  // }
 
-  Widget _entryFieldRole_id(String title, {bool isPassword = false}) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            title,
-            style: TextStyle(
-                fontFamily: 'donut',
-                fontSize: 20,
-                color: Color.fromARGB(255, 255, 255, 255)),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          TextField(
-              controller: role_id,
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(left: 10),
-                  border: InputBorder.none,
-                  fillColor: Colors.white,
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Color(0xff6E8786)),
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xffE2E8F0)),
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
-                  ),
-                  filled: true))
-        ],
-      ),
-    );
-  }
+  // Widget _entryFieldRole_id(String title, {bool isPassword = false}) {
+  //   return Container(
+  //     margin: EdgeInsets.symmetric(vertical: 10),
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: <Widget>[
+  //         Text(
+  //           title,
+  //           style: TextStyle(
+  //               fontFamily: 'donut',
+  //               fontSize: 20,
+  //               color: Color.fromARGB(255, 255, 255, 255)),
+  //         ),
+  //         SizedBox(
+  //           height: 10,
+  //         ),
+  //         TextField(
+  //             controller: role_id,
+  //             decoration: InputDecoration(
+  //                 contentPadding: EdgeInsets.only(left: 10),
+  //                 border: InputBorder.none,
+  //                 fillColor: Colors.white,
+  //                 focusedBorder: OutlineInputBorder(
+  //                   borderSide: const BorderSide(color: Color(0xff6E8786)),
+  //                   borderRadius: BorderRadius.all(Radius.circular(6)),
+  //                 ),
+  //                 enabledBorder: OutlineInputBorder(
+  //                   borderSide: BorderSide(color: Color(0xffE2E8F0)),
+  //                   borderRadius: BorderRadius.all(Radius.circular(6)),
+  //                 ),
+  //                 filled: true))
+  //       ],
+  //     ),
+  //   );
+  // }
 
   Widget _submitButton() {
     return InkWell(
@@ -413,11 +413,11 @@ class _MarketAddState extends State<MarketAdd> {
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
                 colors: [
-                  Color.fromARGB(255, 90, 87, 89),
-                  Color.fromARGB(255, 90, 87, 89),
+                  Color.fromARGB(255, 221, 65, 169),
+                  Color.fromARGB(255, 220, 47, 255),
                 ])),
         child: Text(
-          'กลับ',
+          'ยกเลิก',
           style: TextStyle(
             fontSize: 20,
             color: Colors.white,
@@ -432,7 +432,7 @@ class _MarketAddState extends State<MarketAdd> {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-        text: 'เพิ่มของขวัญ',
+        text: 'เพิ่มสินค้า',
         style: TextStyle(
             fontFamily: 'donut',
             fontSize: 40,
@@ -462,12 +462,12 @@ class _MarketAddState extends State<MarketAdd> {
             log(base64);
           },
         ),
-        _entryFieldUsername("ชื่อสินค้า"),
-        _entryFieldPassword("ราคา", isPassword: true),
+        _entryFieldProductName("ชื่อสินค้า"),
+        _entryFieldPrice("ราคา", isPassword: true),
         SizedBox(
           height: 1,
         ),
-        _entryFieldFullname("รายละเอียดสินค้า"),
+        _entryFieldDetail("รายละเอียดสินค้า"),
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: Text(
@@ -587,7 +587,7 @@ class _MarketAddState extends State<MarketAdd> {
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/Gift4YouBG.jpg"),
+              image: AssetImage("assets/images/Gift4YouBG.png"),
               fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
