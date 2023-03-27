@@ -38,6 +38,8 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   image_picker: ^0.8.6
   flutter_svg: ^2.0.4
+  flutter_animator: ^3.2.2
+  animate_do: ^3.0.2
 
 dev_dependencies:
   flutter_test:

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../auth/login.dart';
+import 'market_list.dart';
 
 class NavigationDrawerWidget extends StatefulWidget {
   const NavigationDrawerWidget({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
   Widget build(BuildContext context) {
     return Drawer(
       child: Material(
-        color: Color.fromARGB(255, 67, 80, 3),
+        color: Color.fromARGB(255, 162, 6, 152),
         child: ListView(
           children: <Widget>[
             Container(
@@ -34,31 +35,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                   buildMenuItem(
                     text: 'หน้าหลัก',
                     icon: Icons.home,
-                    onClicked: () => selectedItem(context, 6),
-                  ),
-                  const SizedBox(height: 24),
-                  buildMenuItem(
-                    text: 'tes 1',
-                    icon: Icons.rice_bowl,
                     onClicked: () => selectedItem(context, 0),
-                  ),
-                  const SizedBox(height: 24),
-                  buildMenuItem(
-                    text: 'tes 1',
-                    icon: Icons.browser_updated,
-                    onClicked: () => selectedItem(context, 1),
-                  ),
-                  const SizedBox(height: 16),
-                  buildMenuItem(
-                    text: 'tes 1',
-                    icon: Icons.shopping_cart,
-                    onClicked: () => selectedItem(context, 2),
-                  ),
-                  const SizedBox(height: 16),
-                  buildMenuItem(
-                    text: 'tes 1',
-                    icon: Icons.history,
-                    onClicked: () => selectedItem(context, 3),
                   ),
                   const SizedBox(height: 24),
                   Divider(color: Colors.white70),
@@ -66,7 +43,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                   buildMenuItem(
                     text: 'ออกจากระบบ',
                     icon: Icons.logout,
-                    onClicked: () => selectedItem(context, 5),
+                    onClicked: () => selectedItem(context, 1),
                   ),
                 ],
               ),
@@ -95,12 +72,12 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "ศาลานา",
+                    "eeeee",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   // const SizedBox(height: 4),
                   Text(
-                    "www.salana.co.th",
+                    "eeeee",
                     style: TextStyle(fontSize: 14, color: Colors.white),
                   ),
                 ],
@@ -168,18 +145,12 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
       case 0:
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => Login()),
+          MaterialPageRoute(builder: (context) => MarketList()),
           (Route<dynamic> route) => false,
         );
         break;
-      case 2:
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => Login()),
-          (Route<dynamic> route) => false,
-        );
-        break;
-      case 3:
+
+      case 1:
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => Login()),

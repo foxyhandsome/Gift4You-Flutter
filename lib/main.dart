@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:giftforyou/src/features/auth/login.dart';
+import 'package:giftforyou/src/features/market/market_list.dart';
 import 'package:giftforyou/src/features/routing/navigate.dart';
 
 void main() {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Login(),
+      home: MarketList(),
     );
   }
 }
