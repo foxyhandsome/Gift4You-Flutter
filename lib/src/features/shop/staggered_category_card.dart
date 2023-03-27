@@ -66,7 +66,6 @@ class CategoryCard extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
-//        mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Container(
                 padding: EdgeInsets.only(bottom: 16.0),
@@ -82,7 +81,7 @@ class CategoryCard extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Text(
-                  'View more',
+                  'ดูสินค้า',
                   style: TextStyle(color: end, fontWeight: FontWeight.bold),
                 ),
               )
@@ -154,13 +153,13 @@ class _StaggeredCardCardState extends State<StaggeredCardCard>
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        // if (isActive) {
-        //   isActive = !isActive;
-        //   _reverseAnimation();
-        // } else {
-        //   isActive = !isActive;
-        //   _playAnimation();
-        // }
+        if (isActive) {
+          isActive = !isActive;
+          _reverseAnimation();
+        } else {
+          isActive = !isActive;
+          _playAnimation();
+        }
       },
       child: CategoryCard(
         controller: _controller.view,

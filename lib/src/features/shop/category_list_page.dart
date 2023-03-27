@@ -14,13 +14,13 @@ class _CategoryListPageState extends State<CategoryListPage> {
     Category(
       Color(0xffFCE183),
       Color(0xffF68D7F),
-      'Gadgets',
+      'ไอที',
       'assets/shoe_thumb_2.png',
     ),
     Category(
       Color(0xffF749A2),
       Color(0xffFF7375),
-      'Clothes',
+      'เสื้อผ้า',
       'assets/shoe_thumb_2.png',
     ),
     Category(
@@ -32,7 +32,7 @@ class _CategoryListPageState extends State<CategoryListPage> {
     Category(
       Color(0xffAF2D68),
       Color(0xff632376),
-      'Home',
+      'เครื่องประดับ',
       'assets/shoe_thumb_2.png',
     ),
     Category(
@@ -73,7 +73,7 @@ class _CategoryListPageState extends State<CategoryListPage> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 16.0),
                 child: Text(
-                  'Category List',
+                  'หมวดหมู่สินค้า',
                   style: TextStyle(
                     color: Colors.amber,
                     fontSize: 22,
