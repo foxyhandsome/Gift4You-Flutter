@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
+
 class Category {
-  int? id;
-  String? name;
-  String? image;
-  bool? isSelected;
-  Category({this.id, this.name, this.isSelected = false, this.image});
+  Color begin;
+  Color end;
+  String category;
+  String image;
+
+  Category(this.begin, this.end, this.category, this.image);
 }
