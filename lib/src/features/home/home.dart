@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
   List<ProductList> data = [];
 
   productload() async {
-    final response =await dio.post('http://192.168.2.34:5000/list-product', data: {"username":"TonUser"});
+    final response =await dio.post('http://192.168.1.38:5000/list-product', data: {"username":"TonUser"});
     if (response.statusCode == 200) {
       response.data.forEach((element) {
         data.add(ProductList.fromJson(element));
