@@ -34,6 +34,9 @@ class _HomeState extends State<Home> {
       setState(() {
         productData = data;
       });
+      for (var i = 0; i < productData!.length; i++) {
+        listShoesImage.add(productData![i].picture.toString());
+      }
     }
 
     print(response);
@@ -48,7 +51,7 @@ class _HomeState extends State<Home> {
     // TODO: implement initState
     super.initState();
     sliderImage();
-    shoesImage();
+    productload();
   }
 
   void sliderImage() {
