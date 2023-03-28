@@ -23,10 +23,13 @@ class _ProductShopMainDeatilState extends State<ProductShopMainDeatil> {
           child: Column(
             children: [
               ProductHeader(item: widget.item!),
-              ProductDetails  (item: widget.item),
+              ProductDetails(item: widget.item),
               SizedBox(height: 15),
               Divider(color: kBorderColor),
-              Expandable(title: 'รายละเอียดสินค้า', trailing: Container()),
+              Expandable(
+                  title: 'รายละเอียดสินค้า',
+                  trailing: Container(),
+                  item: widget.item!),
               Divider(color: kBorderColor, indent: 15, endIndent: 15),
               // Expandable(
               //   title: 'Nutrition',

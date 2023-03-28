@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../../../constant/constants.dart';
+import '../model/product.dart';
 
 class Expandable extends StatefulWidget {
   final String? title;
   final String? description;
   final Widget trailing;
+  final ProductModel? item;
   const Expandable({
     Key? key,
     this.title,
+    this.item,
     this.description,
     required this.trailing,
   }) : super(key: key);
@@ -48,8 +51,7 @@ class _ExpandableState extends State<Expandable>
             child: ConstrainedBox(
               constraints:
                   _expanded ? BoxConstraints() : BoxConstraints(maxHeight: 0),
-              child: Text(widget.description ??
-                  'คัดสรรพันธุ์ข้าวหอม 5 สายพันธุ์ ทั้งข้าวหอมมะลิ 105 ข้าวหอมมะลิแดง ข้าวหอมปทุมเทพ ข้าวหอมนิล และข้าวหอมช่อราตรี ผ่านการ ‘เบลนด์’ สัดส่วนที่ให้ความอร่อยได้อย่างลงตัวพร้อมคุณค่าที่หลากหลาย และร่วมเป็นพลังขับเคลื่อนให้เกษตรกรปลูกพันธุ์ข้าวประจำถิ่น เพื่อรักษาความหลากหลายทางสายพันธุ์เอาไว้ สู่วิถีเกษตรกรที่ยั่งยืน'),
+              child: Text(widget.item!.description!),
             ),
           ),
         ],
