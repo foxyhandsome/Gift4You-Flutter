@@ -28,7 +28,7 @@ class _RegisterState extends State<Register> {
   List<UserInfo>? userData = [];
 
   login() async {
-    final response = await dio.post('http://192.168.2.34:5000/register', data: {
+    final response = await dio.post('http://192.168.1.38:5000/register', data: {
       "username": username.text,
       "password": password.text,
       "gender": sex == 0 ? "ชาย" : "หญิง",

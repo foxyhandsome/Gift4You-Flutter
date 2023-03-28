@@ -29,7 +29,7 @@ class _MarketListState extends State<MarketList> {
   productload() async {
     final username = await storageToken.read(key: 'username');
     final response =
-        await dio.get('http://192.168.2.34:5000/รอกรอก/${username}');
+        await dio.get('http://192.168.1.38:5000/get-product-byusername/${username}');
     if (response.statusCode == 200) {
       response.data.forEach((element) {
         data.add(ProductList.fromJson(element));
@@ -40,6 +40,7 @@ class _MarketListState extends State<MarketList> {
       for (var i = 0; i < productData!.length; i++) {
         products.add(ProductModel(
             image: productData![i].picture,
+            size: "10",
             name: productData![i].productName,
             description: productData![i].productDetail,
             price: doubleFormatCheckZero(productData![i].productPrice!)));
@@ -50,6 +51,12 @@ class _MarketListState extends State<MarketList> {
     }
 
     print(response);
+  }
+
+  @override
+  void initState() {
+    productload();
+    super.initState();
   }
 
   double? doubleFormatCheckZero(String number) {

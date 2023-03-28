@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:giftforyou/src/features/market/widget/product_details%20copy.dart';
+import 'package:giftforyou/src/features/market/widget/product_details.dart';
 import 'package:giftforyou/src/features/market/widget/product_header.dart';
 import '../../../constant/constants.dart';
 import '../model/product.dart';
@@ -23,7 +23,7 @@ class _ProductShopMainDeatilState extends State<ProductShopMainDeatil> {
           child: Column(
             children: [
               ProductHeader(item: widget.item!),
-              ProductDetails(item: widget.item),
+              ProductDetails  (item: widget.item),
               SizedBox(height: 15),
               Divider(color: kBorderColor),
               Expandable(title: 'รายละเอียดสินค้า', trailing: Container()),

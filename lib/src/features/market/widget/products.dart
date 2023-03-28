@@ -38,7 +38,7 @@ class ProductsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
         crossAxisCount: 2,
-        childAspectRatio: .66,
+        childAspectRatio: .55,
         padding: const EdgeInsets.all(10),
         mainAxisSpacing: 9.0,
         crossAxisSpacing: 10,
