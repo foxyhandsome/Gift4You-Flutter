@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:giftforyou/src/features/market/widget/product_shop_main_detail.dart';
 
@@ -38,12 +40,16 @@ class SingleProductWidget extends StatelessWidget {
                     topRight: Radius.circular(15),
                   ),
                   child: Hero(
-                    tag: product.hashCode,
-                    child: Image.network(
-                      product!.image.toString(),
-                      width: double.infinity,
-                    ),
-                  )),
+                      tag: product.hashCode,
+                      child: Image.memory(
+                        Base64Decoder().convert(product!.image.toString()),
+                        width: double.infinity,
+                      ))
+                  //  Image.network(
+                  //   product!.image.toString(),
+                  //   width: double.infinity,
+                  // ),
+                  ),
             ),
             Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),

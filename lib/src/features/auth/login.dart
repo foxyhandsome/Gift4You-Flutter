@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:giftforyou/src/features/auth/register.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -20,7 +21,7 @@ class _LoginState extends State<Login> {
   TextEditingController password = new TextEditingController();
   final dio = Dio();
   List<UserInfo>? userData = [];
-
+  static FlutterSecureStorage storageToken = new FlutterSecureStorage();
   login() async {
     print(username.text);
     print(password.text);
@@ -37,6 +38,10 @@ class _LoginState extends State<Login> {
       setState(() {
         userData = data;
       });
+      await storageToken.write(
+        key: 'username',
+        value: userData![0].username,
+      );
     }
     if (userData != null && userData!.isNotEmpty) {
       if (userData![0].userType == "USER") {

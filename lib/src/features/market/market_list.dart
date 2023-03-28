@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:giftforyou/src/features/market/widget/products.dart';
 import '../../utils/CustomColors.dart';
 import '../../utils/CustomTextStyle.dart';
@@ -21,12 +22,14 @@ class _MarketListState extends State<MarketList> {
   final dio = Dio();
   List<ProductList>? productData = [];
   List<ProductList> data = [];
+  static FlutterSecureStorage storageToken = new FlutterSecureStorage();
   // List<ProductList> productPrice = [];
   // List<ProductList> productName= [];
   // List<ProductList> productDetail = [];
   productload() async {
-    final response = await dio.post('http://192.168.2.34:5000/list-product',
-        data: {"username": "TonUser"});
+    final username = await storageToken.read(key: 'username');
+    final response =
+        await dio.get('http://192.168.2.34:5000/รอกรอก/${username}');
     if (response.statusCode == 200) {
       response.data.forEach((element) {
         data.add(ProductList.fromJson(element));
@@ -35,23 +38,36 @@ class _MarketListState extends State<MarketList> {
         productData = data;
       });
       for (var i = 0; i < productData!.length; i++) {
-        listShoesImage.add(productData![i].picture.toString());
-        // productPrice.add(productData![i].product_price.toString());
+        products.add(ProductModel(
+            image: productData![i].picture,
+            name: productData![i].productName,
+            description: productData![i].productDetail,
+            price: doubleFormatCheckZero(productData![i].productPrice!)));
       }
+      // for (var i = 0; i < productData!.length; i++) {
+      //   listShoesImage.add(productData![i].picture.toString());
+      // }
     }
 
     print(response);
   }
 
+  double? doubleFormatCheckZero(String number) {
+    if (number == 'null' || number.isEmpty) return 0;
+    List<String> splitted = number.split('.');
+    if (splitted.length == 1) return double.parse(splitted[0]);
+    return double.parse(number);
+  }
+
   List<String> listImage = [];
   List<String> listShoesImage = [];
   List<ProductModel> products = [
-    ProductModel(
-        // size: productData[0].productPrice.toString(),
+    // ProductModel(
+    // size: productData[0].productPrice.toString(),
 
-      image: "https://www.salana.co.th/img/shop/rice-green.png",
-      name: "ข้าวหอมอินทรีย์ 5 สายพันธุ์",
-      price: 90.00),
+    // image: "https://www.salana.co.th/img/shop/rice-green.png",
+    // name: "ข้าวหอมอินทรีย์ 5 สายพันธุ์",
+    // price: 90.00),
     // Product(
     //     size: "1 กิโลกรัม",
     //     id: "1",
@@ -136,8 +152,6 @@ class _MarketListState extends State<MarketList> {
     );
   }
 
-
-
   Widget getBody() {
     return Column(
       children: [
@@ -148,7 +162,10 @@ class _MarketListState extends State<MarketList> {
             style: Theme.of(context).textTheme.headline5,
           ),
         ),
-        Expanded(child: ProductsWidget())
+        Expanded(
+            child: ProductsWidget(
+          data: products,
+        ))
       ],
     );
   }

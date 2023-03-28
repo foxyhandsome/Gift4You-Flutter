@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../constant/constants.dart';
@@ -40,14 +42,13 @@ class ProductHeader extends StatelessWidget {
                     ],
                   ),
                   Hero(
-                    tag: item.hashCode,
-                    child: Image.network(
-                      item!.image.toString(),
-                      width: constraints.maxWidth * 0.65,
-                      height: constraints.maxHeight * 0.65,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
+                      tag: item.hashCode,
+                      child: Image.memory(
+                        Base64Decoder().convert(item!.image.toString()),
+                        width: constraints.maxWidth * 0.65,
+                        height: constraints.maxHeight * 0.65,
+                        fit: BoxFit.contain,
+                      ))
                 ],
               );
             },
