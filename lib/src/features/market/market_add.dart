@@ -29,7 +29,7 @@ class _MarketAddState extends State<MarketAdd> {
 
   insertproduct() async {
     final response =
-        await dio.post('http://192.168.1.38:5000/insert-product', data: {
+        await dio.post('http://192.168.2.34:5000/insert-product', data: {
       "picture": picture,
       "product_price": productprice.text,
       "product_name": productname.text,

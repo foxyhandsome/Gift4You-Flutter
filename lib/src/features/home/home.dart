@@ -1,3 +1,7 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -6,6 +10,7 @@ import '../../utils/CustomBorder.dart';
 import '../../utils/CustomColors.dart';
 import '../../utils/CustomTextStyle.dart';
 import '../../utils/CustomUtils.dart';
+import '../auth/model/product_list.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,6 +20,30 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final dio = Dio();
+  List<ProductList>? productData = [];
+  List<ProductList> data = [];
+
+  productload() async {
+    final response =
+        await dio.post('http://192.168.2.34:5000/list-product', data: {});
+    if (response.statusCode == 200) {
+      response.data.forEach((element) {
+        data.add(ProductList.fromJson(element));
+        
+
+      });
+      setState(() {
+        productData = data;
+      });
+    }
+
+    print(response);
+  }
+
+  
+
+
   List<String> listImage = [];
   List<String> listShoesImage = [];
   int selectedSliderPosition = 0;
@@ -28,25 +57,21 @@ class _HomeState extends State<Home> {
   }
 
   void sliderImage() {
-    listImage.add(
-        "assets/images/gift4you.png");
+    listImage.add("assets/images/gift4you.png");
   }
 
   void shoesImage() {
-    listShoesImage.add(
-        "assets/images/gift4you.png");
-    listShoesImage.add(
-        "assets/images/gift4you.png");
-    listShoesImage.add(
-        "assets/images/gift4you.png");
-    listShoesImage.add(
-        "assets/images/gift4you.png");
-    listShoesImage.add(
-        "assets/images/gift4you.png");
-    listShoesImage.add(
-        "assets/images/gift4you.png");
-    listShoesImage.add(
-        "assets/images/gift4you.png");
+    // for(var i=0; i<data.length; i++){
+      Uint8List pictureShow=BASE64.decode(productData[0].picture); 
+    // }
+          // String base64=base64Decode(productData[0].picture); 
+    listShoesImage.add(base64Decode(productData[0].picture));
+    listShoesImage.add("assets/images/gift4you.png");
+    listShoesImage.add("assets/images/gift4you.png");
+    listShoesImage.add("assets/images/gift4you.png");
+    listShoesImage.add("assets/images/gift4you.png");
+    listShoesImage.add("assets/images/gift4you.png");
+    listShoesImage.add("assets/images/gift4you.png");
   }
 
   @override
@@ -101,10 +126,10 @@ class _HomeState extends State<Home> {
                         padding: const EdgeInsets.only(top: 16, left: 16),
                         child: Text(
                           "สินค้า",
-                          style: CustomTextStyle.textFormFieldSemiBold
-                              .copyWith(color: Color.fromARGB(255, 0, 0, 0),
-                            fontFamily: 'donut',
-                            fontSize: 23), 
+                          style: CustomTextStyle.textFormFieldSemiBold.copyWith(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontFamily: 'donut',
+                              fontSize: 23),
                         ),
                       ),
                       Container(
@@ -113,9 +138,10 @@ class _HomeState extends State<Home> {
                           children: <Widget>[
                             Text("ดูทั้งหมด",
                                 style: CustomTextStyle.textFormFieldSemiBold
-                                    .copyWith(color: Color.fromARGB(255, 0, 0, 0),
-                                fontFamily: 'donut',
-                                fontSize: 18)),
+                                    .copyWith(
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        fontFamily: 'donut',
+                                        fontSize: 18)),
                             Icon(Icons.arrow_forward),
                             Utils.getSizedBox(width: 16),
                           ],
@@ -147,11 +173,10 @@ class _HomeState extends State<Home> {
                       padding: const EdgeInsets.only(top: 16, left: 16),
                       child: Text(
                         "ร้านค้า",
-                        style: CustomTextStyle.textFormFieldSemiBold
-                            .copyWith(color: Color.fromARGB(255, 0, 0, 0),
+                        style: CustomTextStyle.textFormFieldSemiBold.copyWith(
+                            color: Color.fromARGB(255, 0, 0, 0),
                             fontFamily: 'donut',
-                            fontSize: 23
-                            ),
+                            fontSize: 23),
                       ),
                     ),
                     Container(
@@ -160,9 +185,10 @@ class _HomeState extends State<Home> {
                         children: <Widget>[
                           Text("ดูทั้งหมด",
                               style: CustomTextStyle.textFormFieldSemiBold
-                                  .copyWith(color: Color.fromARGB(255, 0, 0, 0),
-                                  fontFamily: 'donut',
-                                  fontSize: 18)),
+                                  .copyWith(
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontFamily: 'donut',
+                                      fontSize: 18)),
                           Icon(Icons.arrow_forward),
                           Utils.getSizedBox(width: 16),
                         ],

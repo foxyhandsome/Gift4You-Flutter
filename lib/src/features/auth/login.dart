@@ -25,7 +25,7 @@ class _LoginState extends State<Login> {
     print(username.text);
     print(password.text);
 
-    final response = await dio.post('http://192.168.1.38:5000/login', data: {
+    final response = await dio.post('http://192.168.2.34:5000/login', data: {
       "username": username.text,
       "password": password.text,
     });
