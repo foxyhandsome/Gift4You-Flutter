@@ -19,28 +19,21 @@ class MarketAdd extends StatefulWidget {
 }
 
 class _MarketAddState extends State<MarketAdd> {
-  TextEditingController username = new TextEditingController();
-  TextEditingController password = new TextEditingController();
-  TextEditingController gender = new TextEditingController();
-  TextEditingController fullname = new TextEditingController();
-  TextEditingController email = new TextEditingController();
-  TextEditingController tel = new TextEditingController();
-  TextEditingController role_id = new TextEditingController();
+  TextEditingController productprice = new TextEditingController();
+  TextEditingController productname = new TextEditingController();
+  TextEditingController productdetail = new TextEditingController();
   int sex = 0;
   int category = 0;
   final dio = Dio();
   List<UserInfo>? userData = [];
 
-  login() async {
-    final response = await dio.post('http://192.168.1.38:5000/register', data: {
-      "username": username.text,
-      "password": password.text,
-      "gender": sex == 0 ? "ชาย" : "หญิง",
-      "fullname": fullname.text,
-      "email": email.text,
-      "tel": tel.text,
-      "role_id": category == 0 ? "2" : "3",
-      "user_type": category == 0 ? "USER" : "MARKET"
+  insertproduct() async {
+    final response =
+        await dio.post('http://192.168.1.38:5000/insert-product', data: {
+      "picture": picture,
+      "product_price": productprice.text,
+      "product_name": productname.text,
+      "product_detail": productdetail.text,
     });
     if (response.statusCode == 200) {
       goToMain();
@@ -119,7 +112,7 @@ class _MarketAddState extends State<MarketAdd> {
             height: 10,
           ),
           TextField(
-              controller: username,
+              controller: productname,
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(left: 10),
                   border: InputBorder.none,
@@ -155,7 +148,7 @@ class _MarketAddState extends State<MarketAdd> {
             height: 10,
           ),
           TextField(
-              controller: password,
+              controller: productprice,
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(left: 10),
                   border: InputBorder.none,
@@ -191,7 +184,7 @@ class _MarketAddState extends State<MarketAdd> {
             height: 10,
           ),
           TextField(
-              controller: gender,
+              controller: productdetail,
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(left: 10),
                   border: InputBorder.none,
@@ -357,7 +350,7 @@ class _MarketAddState extends State<MarketAdd> {
   Widget _submitButton() {
     return InkWell(
       onTap: () {
-        login();
+        insertproduct();
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -442,6 +435,8 @@ class _MarketAddState extends State<MarketAdd> {
     );
   }
 
+  String picture = "";
+
   Widget _widget() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -459,7 +454,8 @@ class _MarketAddState extends State<MarketAdd> {
         ImagePickerCustom(
           validate: false,
           onSelected: (base64, fileName) async {
-            log(base64);
+            picture = base64;
+            // log(base64);
           },
         ),
         _entryFieldProductName("ชื่อสินค้า"),
