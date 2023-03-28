@@ -30,8 +30,6 @@ class _HomeState extends State<Home> {
     if (response.statusCode == 200) {
       response.data.forEach((element) {
         data.add(ProductList.fromJson(element));
-        
-
       });
       setState(() {
         productData = data;
@@ -40,9 +38,6 @@ class _HomeState extends State<Home> {
 
     print(response);
   }
-
-  
-
 
   List<String> listImage = [];
   List<String> listShoesImage = [];
@@ -62,16 +57,19 @@ class _HomeState extends State<Home> {
 
   void shoesImage() {
     // for(var i=0; i<data.length; i++){
-      Uint8List pictureShow=BASE64.decode(productData[0].picture); 
+    // Uint8List pictureShow = BASE64.decode(productData[0].picture);
     // }
-          // String base64=base64Decode(productData[0].picture); 
-    listShoesImage.add(base64Decode(productData[0].picture));
-    listShoesImage.add("assets/images/gift4you.png");
-    listShoesImage.add("assets/images/gift4you.png");
-    listShoesImage.add("assets/images/gift4you.png");
-    listShoesImage.add("assets/images/gift4you.png");
-    listShoesImage.add("assets/images/gift4you.png");
-    listShoesImage.add("assets/images/gift4you.png");
+    // String base64=base64Decode(productData[0].picture);
+    // listShoesImage.add(base64Decode(productData[0].picture));
+    for (var i = 0; i < productData!.length; i++) {
+      listShoesImage.add(productData![i].picture.toString());
+    }
+    // listShoesImage.add("assets/images/gift4you.png");
+    // listShoesImage.add("assets/images/gift4you.png");
+    // listShoesImage.add("assets/images/gift4you.png");
+    // listShoesImage.add("assets/images/gift4you.png");
+    // listShoesImage.add("assets/images/gift4you.png");
+    // listShoesImage.add("assets/images/gift4you.png");
   }
 
   @override
@@ -252,7 +250,7 @@ class _HomeState extends State<Home> {
               height: 200,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(image),
+                    image: MemoryImage(Base64Decoder().convert(image)),
                   ),
                   color: Colors.blue.shade200,
                   borderRadius: BorderRadius.only(
@@ -321,7 +319,7 @@ class _HomeState extends State<Home> {
                   height: 200,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(image),
+                        image: MemoryImage(Base64Decoder().convert(image)),
                       ),
                       color: Colors.teal.shade200,
                       borderRadius: BorderRadius.only(
