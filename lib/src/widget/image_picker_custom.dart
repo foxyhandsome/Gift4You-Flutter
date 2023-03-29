@@ -120,7 +120,6 @@ class _ImagePickerCustomState extends State<ImagePickerCustom> {
 
   void _showImageSourceActionSheet(BuildContext context) {
     Function(ImageSource) selectImageSource = (imageSource) {
-      print(imageSource);
       chooseFile(imageSource);
     };
 

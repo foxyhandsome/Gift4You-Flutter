@@ -42,7 +42,7 @@ class _MarketAddState extends State<MarketAdd> {
       Navigator.of(context).pop();
     }
 
-    print(response);
+    // print(response);
   }
 
   void noti(BuildContext context) {

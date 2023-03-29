@@ -56,7 +56,7 @@ class _MarketListState extends State<MarketList> {
       // }
     }
 
-    print(response);
+    // print(response);
   }
 
   @override

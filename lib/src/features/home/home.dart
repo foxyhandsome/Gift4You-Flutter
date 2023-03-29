@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
       }
     }
 
-    print(response);
+    // print(response);
   }
 
   List<String> listImage = [];
@@ -79,7 +79,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color.fromARGB(241, 211, 145, 255),
+      backgroundColor: Color.fromARGB(248, 245, 168, 255),
       body: Builder(
         builder: (context) {
           return SingleChildScrollView(
@@ -154,7 +154,7 @@ class _HomeState extends State<Home> {
                 Utils.getSizedBox(height: 10),
                 /*Group By Product Listing*/
                 ConstrainedBox(
-                  constraints: BoxConstraints(maxHeight: 200),
+                  constraints: BoxConstraints(maxHeight: 240),
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
@@ -199,7 +199,7 @@ class _HomeState extends State<Home> {
                 ),
                 Utils.getSizedBox(height: 10),
                 ConstrainedBox(
-                  constraints: BoxConstraints(maxHeight: 200),
+                  constraints: BoxConstraints(maxHeight: 240),
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
@@ -255,7 +255,7 @@ class _HomeState extends State<Home> {
                   image: DecorationImage(
                     image: MemoryImage(Base64Decoder().convert(image)),
                   ),
-                  color: Colors.blue.shade200,
+                  color: Color.fromARGB(255, 225, 255, 154),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8))),
@@ -325,7 +325,7 @@ class _HomeState extends State<Home> {
                       image: DecorationImage(
                         image: MemoryImage(Base64Decoder().convert(image)),
                       ),
-                      color: Colors.teal.shade200,
+                      color: Color.fromARGB(255, 168, 255, 127),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(radius),
                           topRight: Radius.circular(radius))),

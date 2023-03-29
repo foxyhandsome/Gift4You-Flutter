@@ -42,7 +42,7 @@ class _RegisterState extends State<Register> {
       goToMain();
     }
 
-    print(response);
+    // print(response);
   }
 
   void noti(BuildContext context) {
