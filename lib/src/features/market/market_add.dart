@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../widget/custom_radio.dart';
 import '../../widget/image_picker_custom.dart';
@@ -26,14 +27,16 @@ class _MarketAddState extends State<MarketAdd> {
   int category = 0;
   final dio = Dio();
   List<UserInfo>? userData = [];
-
+  static FlutterSecureStorage storageToken = new FlutterSecureStorage();
   insertproduct() async {
+    final marketId = await storageToken.read(key: 'marketId');
     final response =
         await dio.post('http://192.168.1.38:5000/insert-product', data: {
       "picture": picture,
       "product_price": productprice.text,
       "product_name": productname.text,
       "product_detail": productdetail.text,
+      "market_id": marketId,
     });
     if (response.statusCode == 200) {
       goToMain();

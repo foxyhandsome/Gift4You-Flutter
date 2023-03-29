@@ -23,9 +23,6 @@ class _LoginState extends State<Login> {
   List<UserInfo>? userData = [];
   static FlutterSecureStorage storageToken = new FlutterSecureStorage();
   login() async {
-    print(username.text);
-    print(password.text);
-
     final response = await dio.post('http://192.168.1.38:5000/login', data: {
       "username": username.text,
       "password": password.text,
@@ -41,6 +38,10 @@ class _LoginState extends State<Login> {
       await storageToken.write(
         key: 'username',
         value: userData![0].username,
+      );
+      await storageToken.write(
+        key: 'marketId',
+        value: userData![0].marketId.toString(),
       );
     }
     if (userData != null && userData!.isNotEmpty) {
