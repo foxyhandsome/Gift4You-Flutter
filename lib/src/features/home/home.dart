@@ -126,7 +126,7 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding: const EdgeInsets.only(top: 16, left: 16),
                         child: Text(
-                          "สินค้า",
+                          "สินค้าแนะนำ",
                           style: CustomTextStyle.textFormFieldSemiBold.copyWith(
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontFamily: 'donut',
@@ -159,7 +159,7 @@ class _HomeState extends State<Home> {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return createGroupBuyListItem(
-                          listShoesImage[index], index);
+                          productData![index], listShoesImage[index], index);
                     },
                     itemCount: listShoesImage.length,
                   ),
@@ -232,7 +232,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  createGroupBuyListItem(String image, int index) {
+  createGroupBuyListItem(ProductList data, String image, int index) {
     double leftMargin = 0;
     double rightMargin = 0;
     if (index != listShoesImage.length - 1) {
@@ -273,13 +273,13 @@ class _HomeState extends State<Home> {
                 children: <Widget>[
                   Utils.getSizedBox(height: 8),
                   Text(
-                    "NIKE Kyire II",
+                    '${data.productName}',
                     style: CustomTextStyle.textFormFieldSemiBold.copyWith(
                         color: Colors.black.withOpacity(.7), fontSize: 12),
                   ),
                   Utils.getSizedBox(height: 4),
                   Text(
-                    "Exquisite you need him",
+                    'ราคา ${data.productPrice}',
                     style: CustomTextStyle.textFormFieldSemiBold.copyWith(
                         color: Colors.black.withOpacity(.7), fontSize: 10),
                   )
