@@ -25,7 +25,8 @@ class _HomeState extends State<Home> {
   List<ProductList> data = [];
 
   productload() async {
-    final response =await dio.post('http://192.168.1.38:5000/list-product', data: {"username":"TonUser"});
+    final response = await dio.post('http://192.168.1.38:5000/list-product',
+        data: {"username": "TonUser"});
     if (response.statusCode == 200) {
       response.data.forEach((element) {
         data.add(ProductList.fromJson(element));
@@ -35,7 +36,7 @@ class _HomeState extends State<Home> {
       });
       for (var i = 0; i < productData!.length; i++) {
         listShoesImage.add(productData![i].picture.toString());
-       }
+      }
     }
 
     print(response);
@@ -202,7 +203,7 @@ class _HomeState extends State<Home> {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return createMostBigListItem(
+                      return createMostBigListItem(productData![index],
                           listShoesImage[index], index, context);
                     },
                     itemCount: listShoesImage.length,
@@ -296,7 +297,8 @@ class _HomeState extends State<Home> {
     );
   }
 
-  createMostBigListItem(String image, int index, BuildContext context) {
+  createMostBigListItem(
+      ProductList data, String image, int index, BuildContext context) {
     double leftMargin = 0;
     double rightMargin = 0;
     double radius = 16;
@@ -343,13 +345,13 @@ class _HomeState extends State<Home> {
                   children: <Widget>[
                     Utils.getSizedBox(height: 8),
                     Text(
-                      "NIKE Kyire II",
+                      '${data.productName}',
                       style: CustomTextStyle.textFormFieldSemiBold.copyWith(
                           color: Colors.black.withOpacity(.7), fontSize: 12),
                     ),
                     Utils.getSizedBox(height: 4),
                     Text(
-                      "Exquisite you need him",
+                      'ราคา ${data.productPrice}',
                       style: CustomTextStyle.textFormFieldSemiBold.copyWith(
                           color: Colors.black.withOpacity(.7), fontSize: 10),
                     )
