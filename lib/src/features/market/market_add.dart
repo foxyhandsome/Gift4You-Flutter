@@ -39,7 +39,7 @@ class _MarketAddState extends State<MarketAdd> {
       "market_id": marketId,
     });
     if (response.statusCode == 200) {
-      goToMain();
+      Navigator.of(context).pop();
     }
 
     print(response);
