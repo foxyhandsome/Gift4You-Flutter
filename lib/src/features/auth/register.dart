@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:giftforyou/src/features/auth/model/user_register.dart';
 
 import '../../widget/custom_radio.dart';
+import '../../widget/image_picker_custom.dart';
 import '../routing/navigate.dart';
 import 'model/user_info.dart';
 
@@ -22,8 +23,12 @@ class _RegisterState extends State<Register> {
   TextEditingController email = new TextEditingController();
   TextEditingController tel = new TextEditingController();
   TextEditingController role_id = new TextEditingController();
+  TextEditingController marketName = new TextEditingController();
+  TextEditingController marketAddress = new TextEditingController();
+  TextEditingController marketDetail = new TextEditingController();
   int sex = 0;
   int userType = 0;
+  String picture = "";
   final dio = Dio();
   List<UserInfo>? userData = [];
 
@@ -36,7 +41,22 @@ class _RegisterState extends State<Register> {
       "email": email.text,
       "tel": tel.text,
       "role_id": userType == 0 ? "2" : "3",
-      "user_type" : userType == 0 ? "USER" : "MARKET"
+      "user_type": userType == 0 ? "USER" : "MARKET"
+    });
+    if (response.statusCode == 200) {
+      registerMarket();
+    }
+
+    // print(response);
+  }
+
+  registerMarket() async {
+    final response =
+        await dio.post('http://192.168.1.38:5000/registermarget', data: {
+      "market_Address": marketAddress.text,
+      "marketDetail": marketDetail.text,
+      "marketName": marketName.text,
+      "picture": picture,
     });
     if (response.statusCode == 200) {
       goToMain();
@@ -278,6 +298,114 @@ class _RegisterState extends State<Register> {
     );
   }
 
+  Widget _entryFieldAddres(String title, {bool isPassword = false}) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            title,
+            style: TextStyle(
+                fontFamily: 'donut',
+                fontSize: 20,
+                color: Color.fromARGB(255, 255, 255, 255)),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextField(
+              controller: marketAddress,
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(left: 10),
+                  border: InputBorder.none,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Color(0xff6E8786)),
+                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xffE2E8F0)),
+                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                  ),
+                  filled: true))
+        ],
+      ),
+    );
+  }
+
+  Widget _entryFieldDetail(String title, {bool isPassword = false}) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            title,
+            style: TextStyle(
+                fontFamily: 'donut',
+                fontSize: 20,
+                color: Color.fromARGB(255, 255, 255, 255)),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextField(
+              controller: marketDetail,
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(left: 10),
+                  border: InputBorder.none,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Color(0xff6E8786)),
+                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xffE2E8F0)),
+                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                  ),
+                  filled: true))
+        ],
+      ),
+    );
+  }
+
+  Widget _entryFieldMarketName(String title, {bool isPassword = false}) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            title,
+            style: TextStyle(
+                fontFamily: 'donut',
+                fontSize: 20,
+                color: Color.fromARGB(255, 255, 255, 255)),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextField(
+              controller: marketName,
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(left: 10),
+                  border: InputBorder.none,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Color(0xff6E8786)),
+                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xffE2E8F0)),
+                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                  ),
+                  filled: true))
+        ],
+      ),
+    );
+  }
+
   Widget _entryFieldTel(String title, {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -387,7 +515,6 @@ class _RegisterState extends State<Register> {
     );
   }
 
-
   Widget _title() {
     return RichText(
       textAlign: TextAlign.center,
@@ -478,6 +605,32 @@ class _RegisterState extends State<Register> {
             });
           },
         ),
+        Visibility(
+            visible: userType == 1,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10, top: 20),
+                  child: Text(
+                    "เลือกรูปภาพร้านค้า",
+                    style: TextStyle(
+                        fontFamily: 'donut',
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 255, 255, 255)),
+                  ),
+                ),
+                ImagePickerCustom(
+                  validate: false,
+                  onSelected: (base64, fileName) async {
+                    picture = base64;
+                    // log(base64);
+                  },
+                ),
+                _entryFieldMarketName("ชื่อร้านค้า"),
+                _entryFieldAddres("ที่อยู่ร้านค้า"),
+                _entryFieldDetail("รายละเอียดร้านค้า")
+              ],
+            ))
       ],
     );
   }
