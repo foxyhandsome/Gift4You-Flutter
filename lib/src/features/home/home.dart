@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+import '../../model/market.dart';
 import '../../utils/CustomBorder.dart';
 import '../../utils/CustomColors.dart';
 import '../../utils/CustomTextStyle.dart';
@@ -22,6 +23,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final dio = Dio();
   List<ProductList>? productData = [];
+  List<Market>? marketData = [];
+  List<Market> marketDataList = [];
   List<ProductList> data = [];
 
   productload() async {
@@ -38,12 +41,29 @@ class _HomeState extends State<Home> {
         listShoesImage.add(productData![i].picture.toString());
       }
     }
+    // print(response);
+  }
 
+  market() async {
+    final response = await dio.post('http://192.168.1.38:5000/list-product',
+        data: {"username": "TonUser"});
+    if (response.statusCode == 200) {
+      response.data.forEach((element) {
+        marketDataList.add(Market.fromJson(element));
+      });
+      setState(() {
+        marketData = marketDataList;
+      });
+      for (var i = 0; i < marketData!.length; i++) {
+        listShoesImageMarket.add(marketData![i].marketPicture.toString());
+      }
+    }
     // print(response);
   }
 
   List<String> listImage = [];
   List<String> listShoesImage = [];
+  List<String> listShoesImageMarket = [];
   int selectedSliderPosition = 0;
 
   @override
@@ -52,6 +72,7 @@ class _HomeState extends State<Home> {
     super.initState();
     sliderImage();
     productload();
+    market();
   }
 
   void sliderImage() {
@@ -203,8 +224,8 @@ class _HomeState extends State<Home> {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return createMostBigListItem(productData![index],
-                          listShoesImage[index], index, context);
+                      return createMostBigListItem(marketData![index],
+                          listShoesImageMarket[index], index, context);
                     },
                     itemCount: listShoesImage.length,
                   ),
@@ -298,7 +319,7 @@ class _HomeState extends State<Home> {
   }
 
   createMostBigListItem(
-      ProductList data, String image, int index, BuildContext context) {
+      Market data, String image, int index, BuildContext context) {
     double leftMargin = 0;
     double rightMargin = 0;
     double radius = 16;
@@ -345,13 +366,13 @@ class _HomeState extends State<Home> {
                   children: <Widget>[
                     Utils.getSizedBox(height: 8),
                     Text(
-                      '${data.productName}',
+                      '${data.marketName}',
                       style: CustomTextStyle.textFormFieldSemiBold.copyWith(
                           color: Colors.black.withOpacity(.7), fontSize: 12),
                     ),
                     Utils.getSizedBox(height: 4),
                     Text(
-                      'ราคา ${data.productPrice}',
+                      'ราคา ${data.marketDetail}',
                       style: CustomTextStyle.textFormFieldSemiBold.copyWith(
                           color: Colors.black.withOpacity(.7), fontSize: 10),
                     )
