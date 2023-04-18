@@ -5,29 +5,44 @@ class ProductModel {
   static const BRAND = "brand";
   static const PRICE = "price";
   static const DESCRIPTION = "description";
+  static const MARKETNAME = "market_name";
+  static const CATEGORY = "category";
+  static const GENDER = "gender";
+  static const SPECIALDAY = "specialday";
   String? id;
   String? image;
   String? name;
   String? size;
   String? description;
+  String? category;
+  String? gender;
+  String? specialday;
+  String? marketName;
   double? price;
 
-  ProductModel(
-      {this.id,
-      this.image,
-      this.name,
-      this.size,
-      this.price,
-      this.description});
+  ProductModel({
+    this.id,
+    this.image,
+    this.name,
+    this.size,
+    this.price,
+    this.description,
+    this.category,
+    this.gender,
+    this.specialday,
+    this.marketName,
+  });
 
   ProductModel.fromMap(Map<String, dynamic> data) {
     id = data[ID];
     image = data[IMAGE];
     name = data[NAME];
     description = data[DESCRIPTION];
+    marketName = data[MARKETNAME];
+    category = data[CATEGORY];
+    gender = data[GENDER];
+    specialday = data[SPECIALDAY];
     size = data[BRAND];
     price = data[PRICE].toDouble();
   }
 }
-
-

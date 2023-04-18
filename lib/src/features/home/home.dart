@@ -12,6 +12,8 @@ import '../../utils/CustomColors.dart';
 import '../../utils/CustomTextStyle.dart';
 import '../../utils/CustomUtils.dart';
 import '../auth/model/product_list.dart';
+import '../market/model/product.dart';
+import '../market/widget/product_shop_main_detail.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -59,6 +61,22 @@ class _HomeState extends State<Home> {
       }
     }
     // print(response);
+  }
+
+  double? doubleFormatCheckZero(String number) {
+    if (number == 'null' || number.isEmpty) return 0;
+    List<String> splitted = number.split('.');
+    if (splitted.length == 1) return double.parse(splitted[0]);
+    return double.parse(number);
+  }
+
+  onTap(BuildContext context, ProductList data) {
+    ProductModel req = new ProductModel();
+    req.image = data.marketPicture;
+    req.name = data.productName;
+    req.price = doubleFormatCheckZero(data.productPrice!);
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => ProductShopMainDeatil(item: req)));
   }
 
   List<String> listImage = [];
@@ -262,58 +280,61 @@ class _HomeState extends State<Home> {
       leftMargin = 10;
       rightMargin = 10;
     }
-    return Container(
-      margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            child: Container(
-              width: 200,
-              height: 200,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: MemoryImage(Base64Decoder().convert(image)),
-                  ),
-                  color: Color.fromARGB(255, 225, 255, 154),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(8),
-                      topRight: Radius.circular(8))),
-            ),
-            flex: 75,
-          ),
-          Expanded(
-            flex: 25,
-            child: Container(
-              padding: EdgeInsets.only(left: leftMargin, right: rightMargin),
-              width: 200,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Utils.getSizedBox(height: 8),
-                  Text(
-                    '${data.productName}',
-                    style: CustomTextStyle.textFormFieldSemiBold.copyWith(
-                        color: Colors.black.withOpacity(.7), fontSize: 12),
-                  ),
-                  Utils.getSizedBox(height: 4),
-                  Text(
-                    'ราคา ${data.productPrice}',
-                    style: CustomTextStyle.textFormFieldSemiBold.copyWith(
-                        color: Colors.black.withOpacity(.7), fontSize: 10),
-                  )
-                ],
+    return InkWell(
+      onTap: onTap(context, data),
+      child: Container(
+        margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                width: 200,
+                height: 200,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: MemoryImage(Base64Decoder().convert(image)),
+                    ),
+                    color: Color.fromARGB(255, 225, 255, 154),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(8),
+                        topRight: Radius.circular(8))),
               ),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(8),
-                      bottomRight: Radius.circular(8))),
+              flex: 75,
             ),
-          )
-        ],
+            Expanded(
+              flex: 25,
+              child: Container(
+                padding: EdgeInsets.only(left: leftMargin, right: rightMargin),
+                width: 200,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Utils.getSizedBox(height: 8),
+                    Text(
+                      '${data.productName}',
+                      style: CustomTextStyle.textFormFieldSemiBold.copyWith(
+                          color: Colors.black.withOpacity(.7), fontSize: 12),
+                    ),
+                    Utils.getSizedBox(height: 4),
+                    Text(
+                      'ราคา ${data.productPrice}',
+                      style: CustomTextStyle.textFormFieldSemiBold.copyWith(
+                          color: Colors.black.withOpacity(.7), fontSize: 10),
+                    )
+                  ],
+                ),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(8),
+                        bottomRight: Radius.circular(8))),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
