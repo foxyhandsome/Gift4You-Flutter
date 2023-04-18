@@ -72,11 +72,12 @@ class _HomeState extends State<Home> {
 
   onTap(BuildContext context, ProductList data) {
     ProductModel req = new ProductModel();
-    req.image = data.marketPicture;
+    req.image = data.picture;
     req.name = data.productName;
     req.price = doubleFormatCheckZero(data.productPrice!);
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => ProductShopMainDeatil(item: req)));
+    // Navigator.of(context).push(
+    //     MaterialPageRoute(builder: (_) => ProductShopMainDeatil(item: req)));
+    print("1");
   }
 
   List<String> listImage = [];
