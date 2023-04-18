@@ -285,6 +285,7 @@ class _HomeState extends State<Home> {
       rightMargin = 10;
     }
     return InkWell(
+      onDoubleTap: () => {print("Ddddd")},
       child: Container(
         margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
         decoration:
