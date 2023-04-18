@@ -44,7 +44,11 @@ class _RegisterState extends State<Register> {
       "user_type": userType == 0 ? "USER" : "MARKET"
     });
     if (response.statusCode == 200) {
-      registerMarket();
+      if (userType == 1) {
+        registerMarket();
+      } else {
+        goToMain();
+      }
     }
 
     // print(response);
@@ -52,11 +56,12 @@ class _RegisterState extends State<Register> {
 
   registerMarket() async {
     final response =
-        await dio.post('http://192.168.1.38:5000/registermarget', data: {
-      "market_Address": marketAddress.text,
-      "marketDetail": marketDetail.text,
-      "marketName": marketName.text,
+        await dio.post('http://192.168.1.38:5000/registermarket', data: {
+      "market_address": marketAddress.text,
+      "market_detail": marketDetail.text,
+      "market_name": marketName.text,
       "picture": picture,
+      "username": username.text
     });
     if (response.statusCode == 200) {
       goToMain();
