@@ -2,9 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:giftforyou/src/features/auth/model/user_register.dart';
+import 'package:giftforyou/src/features/market/market_list.dart';
 
 import '../../widget/custom_radio.dart';
 import '../../widget/image_picker_custom.dart';
+import '../market/navigation_drawer_widget.dart';
 import '../routing/navigate.dart';
 import 'model/user_info.dart';
 
@@ -60,11 +62,11 @@ class _RegisterState extends State<Register> {
       "market_address": marketAddress.text,
       "market_detail": marketDetail.text,
       "market_name": marketName.text,
-      "picture": picture,
+      "market_picture": picture,
       "username": username.text
     });
     if (response.statusCode == 200) {
-      goToMain();
+      goToMarket();
     }
 
     // print(response);
@@ -109,6 +111,18 @@ class _RegisterState extends State<Register> {
             ],
           );
         });
+  }
+
+  goToMarket() {
+    Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+      MaterialPageRoute(
+        settings: RouteSettings(name: "/MenuBar"),
+        builder: (BuildContext context) {
+          return MarketList();
+        },
+      ),
+      (_) => false,
+    );
   }
 
   goToMain() {

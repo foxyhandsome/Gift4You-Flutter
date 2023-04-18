@@ -5,7 +5,7 @@ class ProductList {
   String? productName;
   String? productDetail;
   int? marketId;
-  Null? marketPicture;
+  String? marketPicture;
   String? marketName;
   String? marketTel;
   String? marketAddress;

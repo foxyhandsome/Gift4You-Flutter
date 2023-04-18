@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
   }
 
   market() async {
-    final response = await dio.post('http://192.168.1.38:5000/list-product',
+    final response = await dio.post('http://192.168.1.38:5000/list-market',
         data: {"username": "TonUser"});
     if (response.statusCode == 200) {
       response.data.forEach((element) {
@@ -227,7 +227,7 @@ class _HomeState extends State<Home> {
                       return createMostBigListItem(marketData![index],
                           listShoesImageMarket[index], index, context);
                     },
-                    itemCount: listShoesImage.length,
+                    itemCount: listShoesImageMarket.length,
                   ),
                 ),
                 Utils.getSizedBox(height: 10),
@@ -372,7 +372,7 @@ class _HomeState extends State<Home> {
                     ),
                     Utils.getSizedBox(height: 4),
                     Text(
-                      'ราคา ${data.marketDetail}',
+                      '${data.marketDetail}',
                       style: CustomTextStyle.textFormFieldSemiBold.copyWith(
                           color: Colors.black.withOpacity(.7), fontSize: 10),
                     )

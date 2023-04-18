@@ -25,7 +25,7 @@ class _MarketAddState extends State<MarketAdd> {
   TextEditingController productdetail = new TextEditingController();
   int sex = 0;
   int category = 0;
-  int specialDay = 0;
+  int specialday = 0;
   final dio = Dio();
   List<UserInfo>? userData = [];
   static FlutterSecureStorage storageToken = new FlutterSecureStorage();
@@ -40,7 +40,7 @@ class _MarketAddState extends State<MarketAdd> {
       "market_id": marketId,
       "category": checkCategory(category),
       "gender": sex == 0 ? "ชาย" : "หญิง",
-      "specialDay": checkSpecialDay(category),
+      "specialday": checkSpecialDay(category),
     });
     if (response.statusCode == 200) {
       Navigator.of(context).pop();
@@ -633,10 +633,10 @@ class _MarketAddState extends State<MarketAdd> {
         CustomRadio(
           name: 'วันฮาโลวีน',
           value: 0,
-          groupValue: specialDay,
+          groupValue: specialday,
           onChanged: (value, name) {
             setState(() {
-              specialDay = value;
+              specialday = value;
             });
           },
         ),
@@ -646,10 +646,10 @@ class _MarketAddState extends State<MarketAdd> {
         CustomRadio(
           name: 'วันเเห่งความรัก',
           value: 1,
-          groupValue: specialDay,
+          groupValue: specialday,
           onChanged: (value, name) {
             setState(() {
-              specialDay = value;
+              specialday = value;
             });
           },
         ),
@@ -659,10 +659,10 @@ class _MarketAddState extends State<MarketAdd> {
         CustomRadio(
           name: 'วันเด็ก',
           value: 2,
-          groupValue: specialDay,
+          groupValue: specialday,
           onChanged: (value, name) {
             setState(() {
-              specialDay = value;
+              specialday = value;
             });
           },
         ),
@@ -672,10 +672,10 @@ class _MarketAddState extends State<MarketAdd> {
         CustomRadio(
           name: 'วันเกิด',
           value: 3,
-          groupValue: specialDay,
+          groupValue: specialday,
           onChanged: (value, name) {
             setState(() {
-              specialDay = value;
+              specialday = value;
             });
           },
         ),
@@ -685,10 +685,10 @@ class _MarketAddState extends State<MarketAdd> {
         CustomRadio(
           name: 'วันสงกรานต์',
           value: 4,
-          groupValue: specialDay,
+          groupValue: specialday,
           onChanged: (value, name) {
             setState(() {
-              specialDay = value;
+              specialday = value;
             });
           },
         ),
