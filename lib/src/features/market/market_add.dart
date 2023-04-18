@@ -25,6 +25,7 @@ class _MarketAddState extends State<MarketAdd> {
   TextEditingController productdetail = new TextEditingController();
   int sex = 0;
   int category = 0;
+  int specialDay = 0;
   final dio = Dio();
   List<UserInfo>? userData = [];
   static FlutterSecureStorage storageToken = new FlutterSecureStorage();
@@ -37,12 +38,53 @@ class _MarketAddState extends State<MarketAdd> {
       "product_name": productname.text,
       "product_detail": productdetail.text,
       "market_id": marketId,
+      "category": checkCategory(category),
+      "gender": sex == 0 ? "ชาย" : "หญิง",
+      "specialDay": checkSpecialDay(category),
     });
     if (response.statusCode == 200) {
       Navigator.of(context).pop();
     }
 
     // print(response);
+  }
+
+  checkSpecialDay(int data) {
+    if (data == 0) {
+      return "วันฮาโลวีน";
+    }
+    if (data == 1) {
+      return "วันเเห่งความรัก";
+    }
+    if (data == 2) {
+      return "วันเด็ก";
+    }
+    if (data == 3) {
+      return "วันเกิด";
+    }
+    if (data == 4) {
+      return "วันสงกรานต์";
+    }
+    return "อื่นๆ";
+  }
+
+  checkCategory(int data) {
+    if (data == 0) {
+      return "ไอที";
+    }
+    if (data == 1) {
+      return "เสื้อผ้า";
+    }
+    if (data == 2) {
+      return "เครื่องประดับ";
+    }
+    if (data == 3) {
+      return "ของเล่น";
+    }
+    if (data == 4) {
+      return "ดอกไม้";
+    }
+    return "อื่นๆ";
   }
 
   void noti(BuildContext context) {
@@ -572,6 +614,81 @@ class _MarketAddState extends State<MarketAdd> {
           onChanged: (value, name) {
             setState(() {
               category = value;
+            });
+          },
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Text(
+            "วันพิเศษ",
+            style: TextStyle(
+                fontFamily: 'donut',
+                fontSize: 20,
+                color: Color.fromARGB(255, 255, 255, 255)),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        CustomRadio(
+          name: 'วันฮาโลวีน',
+          value: 0,
+          groupValue: specialDay,
+          onChanged: (value, name) {
+            setState(() {
+              specialDay = value;
+            });
+          },
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        CustomRadio(
+          name: 'วันเเห่งความรัก',
+          value: 1,
+          groupValue: specialDay,
+          onChanged: (value, name) {
+            setState(() {
+              specialDay = value;
+            });
+          },
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        CustomRadio(
+          name: 'วันเด็ก',
+          value: 2,
+          groupValue: specialDay,
+          onChanged: (value, name) {
+            setState(() {
+              specialDay = value;
+            });
+          },
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        CustomRadio(
+          name: 'วันเกิด',
+          value: 3,
+          groupValue: specialDay,
+          onChanged: (value, name) {
+            setState(() {
+              specialDay = value;
+            });
+          },
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        CustomRadio(
+          name: 'วันสงกรานต์',
+          value: 4,
+          groupValue: specialDay,
+          onChanged: (value, name) {
+            setState(() {
+              specialDay = value;
             });
           },
         ),
