@@ -197,8 +197,11 @@ class _HomeState extends State<Home> {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return createGroupBuyListItem(
-                          productData![index], listShoesImage[index], index);
+                      return InkWell(
+                        onTap: onTap(context, productData![index]),
+                        child: createGroupBuyListItem(
+                            productData![index], listShoesImage[index], index),
+                      );
                     },
                     itemCount: listShoesImage.length,
                   ),
@@ -281,7 +284,6 @@ class _HomeState extends State<Home> {
       rightMargin = 10;
     }
     return InkWell(
-      onTap: onTap(context, data),
       child: Container(
         margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
         decoration:
