@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+import '../../constant/constants.dart';
 import '../../model/market.dart';
 import '../../utils/CustomBorder.dart';
 import '../../utils/CustomColors.dart';
@@ -30,8 +31,8 @@ class _HomeState extends State<Home> {
   List<ProductList> data = [];
 
   productload() async {
-    final response = await dio.post('http://192.168.1.38:5000/list-product',
-        data: {"username": "TonUser"});
+    final response =
+        await dio.post('${host}/list-product', data: {"username": "TonUser"});
     if (response.statusCode == 200) {
       response.data.forEach((element) {
         data.add(ProductList.fromJson(element));
@@ -47,8 +48,8 @@ class _HomeState extends State<Home> {
   }
 
   market() async {
-    final response = await dio.post('http://192.168.1.38:5000/list-market',
-        data: {"username": "TonUser"});
+    final response =
+        await dio.post('${host}/list-market', data: {"username": "TonUser"});
     if (response.statusCode == 200) {
       response.data.forEach((element) {
         marketDataList.add(Market.fromJson(element));

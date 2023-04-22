@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:giftforyou/src/features/auth/model/user_register.dart';
 import 'package:giftforyou/src/features/market/market_list.dart';
 
+import '../../constant/constants.dart';
 import '../../widget/custom_radio.dart';
 import '../../widget/image_picker_custom.dart';
 import '../market/navigation_drawer_widget.dart';
@@ -35,7 +36,7 @@ class _RegisterState extends State<Register> {
   List<UserInfo>? userData = [];
 
   login() async {
-    final response = await dio.post('http://192.168.1.38:5000/register', data: {
+    final response = await dio.post('${host}/register', data: {
       "username": username.text,
       "password": password.text,
       "gender": sex == 0 ? "ชาย" : "หญิง",
@@ -57,8 +58,7 @@ class _RegisterState extends State<Register> {
   }
 
   registerMarket() async {
-    final response =
-        await dio.post('http://192.168.1.38:5000/registermarket', data: {
+    final response = await dio.post('${host}/registermarket', data: {
       "market_address": marketAddress.text,
       "market_detail": marketDetail.text,
       "market_name": marketName.text,

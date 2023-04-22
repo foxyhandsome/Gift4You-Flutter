@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+import '../../constant/constants.dart';
 import '../../widget/custom_radio.dart';
 import '../../widget/image_picker_custom.dart';
 import '../auth/model/user_info.dart';
@@ -31,8 +32,7 @@ class _MarketAddState extends State<MarketAdd> {
   static FlutterSecureStorage storageToken = new FlutterSecureStorage();
   insertproduct() async {
     final marketId = await storageToken.read(key: 'marketId');
-    final response =
-        await dio.post('http://192.168.1.38:5000/insert-product', data: {
+    final response = await dio.post('${host}/insert-product', data: {
       "picture": picture,
       "product_price": productprice.text,
       "product_name": productname.text,

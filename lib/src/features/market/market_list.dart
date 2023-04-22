@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:giftforyou/src/features/market/widget/products.dart';
+import '../../constant/constants.dart';
 import '../../utils/CustomColors.dart';
 import '../../utils/CustomTextStyle.dart';
 import '../../utils/CustomUtils.dart';
@@ -28,14 +29,14 @@ class _MarketListState extends State<MarketList> {
   // List<ProductList> productDetail = [];
   productload() async {
     setState(() {
-        products.clear();
-        products = [];
-        data.clear();
-        data = [];
-      });
+      products.clear();
+      products = [];
+      data.clear();
+      data = [];
+    });
     final username = await storageToken.read(key: 'username');
-    final response = await dio
-        .get('http://192.168.1.38:5000/get-product-byusername/${username}');
+    final response =
+        await dio.get('${host}/get-product-byusername/${username}');
     if (response.statusCode == 200) {
       response.data.forEach((element) {
         data.add(ProductList.fromJson(element));

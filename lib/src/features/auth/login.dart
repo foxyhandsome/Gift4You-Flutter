@@ -5,6 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:giftforyou/src/features/auth/register.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../../constant/constants.dart';
 import '../market/market_list.dart';
 import '../routing/navigate.dart';
 import 'model/user_info.dart';
@@ -23,7 +24,7 @@ class _LoginState extends State<Login> {
   List<UserInfo>? userData = [];
   static FlutterSecureStorage storageToken = new FlutterSecureStorage();
   login() async {
-    final response = await dio.post('http://192.168.1.38:5000/login', data: {
+    final response = await dio.post('${host}/login', data: {
       "username": username.text,
       "password": password.text,
     });

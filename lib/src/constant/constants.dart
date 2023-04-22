@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+
+var host = "http://192.168.1.38:5000";
 
 final Color kPrimaryColor = Color(0xff53B175);
 final Color kShadowColor = Color(0xffA8A8A8);
