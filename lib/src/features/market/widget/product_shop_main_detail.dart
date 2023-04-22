@@ -31,6 +31,11 @@ class _ProductShopMainDeatilState extends State<ProductShopMainDeatil> {
                   trailing: Container(),
                   item: widget.item!),
               Divider(color: kBorderColor, indent: 15, endIndent: 15),
+              Expandable(
+                  title: 'รายละเอียดสินค้า',
+                  trailing: Container(),
+                  item: widget.item!),
+              Divider(color: kBorderColor, indent: 15, endIndent: 15),
               // Expandable(
               //   title: 'Nutrition',
               //   trailing: Container(

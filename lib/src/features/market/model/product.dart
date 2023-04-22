@@ -20,7 +20,20 @@ class ProductModel {
   String? marketName;
   double? price;
 
+  int? marketId;
+  String? marketPicture;
+  String? marketTel;
+  String? marketAddress;
+  String? marketDetail;
+  String? username;
+
   ProductModel({
+    this.marketId,
+    this.marketPicture,
+    this.marketTel,
+    this.marketAddress,
+    this.marketDetail,
+    this.username,
     this.id,
     this.image,
     this.name,

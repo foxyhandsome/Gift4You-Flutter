@@ -38,9 +38,9 @@ class _MarketAddState extends State<MarketAdd> {
       "product_name": productname.text,
       "product_detail": productdetail.text,
       "market_id": marketId,
-      "category": checkCategory(category),
-      "gender": sex == 0 ? "ชาย" : "หญิง",
-      "specialday": checkSpecialDay(category),
+      "category_id": checkCategory(category),
+      "gender_id": sex == 0 ? 1 : 2,
+      "sday_id": checkSpecialDay(category),
     });
     if (response.statusCode == 200) {
       Navigator.of(context).pop();
@@ -51,38 +51,38 @@ class _MarketAddState extends State<MarketAdd> {
 
   checkSpecialDay(int data) {
     if (data == 0) {
-      return "วันฮาโลวีน";
+      return 1;
     }
     if (data == 1) {
-      return "วันเเห่งความรัก";
+      return 2;
     }
     if (data == 2) {
-      return "วันเด็ก";
+      return 3;
     }
     if (data == 3) {
-      return "วันเกิด";
+      return 4;
     }
     if (data == 4) {
-      return "วันสงกรานต์";
+      return 5;
     }
     return "อื่นๆ";
   }
 
   checkCategory(int data) {
     if (data == 0) {
-      return "ไอที";
+      return 1;
     }
     if (data == 1) {
-      return "เสื้อผ้า";
+      return 2;
     }
     if (data == 2) {
-      return "เครื่องประดับ";
+      return 3;
     }
     if (data == 3) {
-      return "ของเล่น";
+      return 4;
     }
     if (data == 4) {
-      return "ดอกไม้";
+      return 5;
     }
     return "อื่นๆ";
   }

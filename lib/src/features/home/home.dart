@@ -1,14 +1,8 @@
 import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
 import '../../constant/constants.dart';
 import '../../model/market.dart';
-import '../../utils/CustomBorder.dart';
 import '../../utils/CustomColors.dart';
 import '../../utils/CustomTextStyle.dart';
 import '../../utils/CustomUtils.dart';
@@ -71,14 +65,17 @@ class _HomeState extends State<Home> {
     return double.parse(number);
   }
 
-  onTap(BuildContext context, ProductList data) {
+  onGoToDeatil(BuildContext context, ProductList data) {
     ProductModel req = new ProductModel();
     req.image = data.picture;
     req.name = data.productName;
     req.price = doubleFormatCheckZero(data.productPrice!);
-    // Navigator.of(context).push(
-    //     MaterialPageRoute(builder: (_) => ProductShopMainDeatil(item: req)));
-    print("1");
+    req.description = data.productDetail;
+    req.marketAddress = data.marketAddress;
+    req.marketDetail = data.marketDetail;
+    req.marketTel = data.marketTel;
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => ProductShopMainDeatil(item: req)));
   }
 
   List<String> listImage = [];
@@ -88,7 +85,6 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     sliderImage();
     productload();
@@ -100,20 +96,9 @@ class _HomeState extends State<Home> {
   }
 
   void shoesImage() {
-    // for(var i=0; i<data.length; i++){
-    // Uint8List pictureShow = BASE64.decode(productData[0].picture);
-    // }
-    // String base64=base64Decode(productData[0].picture);
-    // listShoesImage.add(base64Decode(productData[0].picture));
     for (var i = 0; i < productData!.length; i++) {
       listShoesImage.add(productData![i].picture.toString());
     }
-    // listShoesImage.add("assets/images/gift4you.png");
-    // listShoesImage.add("assets/images/gift4you.png");
-    // listShoesImage.add("assets/images/gift4you.png");
-    // listShoesImage.add("assets/images/gift4you.png");
-    // listShoesImage.add("assets/images/gift4you.png");
-    // listShoesImage.add("assets/images/gift4you.png");
   }
 
   @override
@@ -157,10 +142,7 @@ class _HomeState extends State<Home> {
                 ),
                 Utils.getSizedBox(height: 30),
                 GestureDetector(
-                  onTap: () {
-                    // Navigator.of(context).push(new MaterialPageRoute(
-                    //     builder: (context) => SeeAllProductPage()));
-                  },
+                  onTap: () {},
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -199,8 +181,8 @@ class _HomeState extends State<Home> {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: onTap(context, productData![index]),
+                      return Container(
+                        // onTap: onTap(context, productData![index]),
                         child: createGroupBuyListItem(
                             productData![index], listShoesImage[index], index),
                       );
@@ -286,7 +268,7 @@ class _HomeState extends State<Home> {
       rightMargin = 10;
     }
     return InkWell(
-      onDoubleTap: () => {print("Ddddd")},
+      onTap: () => {onGoToDeatil(context, productData![index])},
       child: Container(
         margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
         decoration:
