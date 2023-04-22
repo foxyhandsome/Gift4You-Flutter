@@ -21,53 +21,53 @@ class _ProductShopMainDeatilState extends State<ProductShopMainDeatil> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ProductHeader(item: widget.item!),
               ProductDetails(item: widget.item),
               SizedBox(height: 15),
               Divider(color: kBorderColor),
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Container(
+                  child: Text(
+                    'ชื่อร้านค้า : ${widget.item!.marketName}',
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Container(
+                  child: Text(
+                    'สำหรับเพศ : ${widget.item!.genderName}',
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Container(
+                  child: Text(
+                    'หมวดหมู่ : ${widget.item!.categoryName}',
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Container(
+                  child: Text(
+                    'สำหรับวันพิเศษ : ${widget.item!.sdayName}',
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ),
               Expandable(
                   title: 'รายละเอียดสินค้า',
                   trailing: Container(),
                   item: widget.item!),
-              Divider(color: kBorderColor, indent: 15, endIndent: 15),
-              Expandable(
-                  title: 'รายละเอียดสินค้า',
-                  trailing: Container(),
-                  item: widget.item!),
-              Divider(color: kBorderColor, indent: 15, endIndent: 15),
-              // Expandable(
-              //   title: 'Nutrition',
-              //   trailing: Container(
-              //     padding: const EdgeInsets.all(4),
-              //     decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(10),
-              //       color: kSecondaryColor,
-              //     ),
-              //     child: Text('100gr'),
-              //   ),
-              // ),
-              // Divider(color: kBorderColor, indent: 15, endIndent: 15),
-              // Expandable(
-              //   title: 'Reviews',
-              //   trailing: Row(
-              //     children: List.generate(
-              //         5,
-              //         (index) => Icon(
-              //               Icons.star,
-              //               color: Colors.amber,
-              //               size: 20,
-              //             )),
-              //   ),
-              // ),
               SizedBox(height: 30),
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 15),
-              //   child: CustomButton(
-              //     text: 'Add To Cart',
-              //     onTap: () => {},
-              //   ),
-              // ),
             ],
           ),
         ),

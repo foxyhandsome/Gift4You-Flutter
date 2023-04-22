@@ -8,6 +8,7 @@ import '../../utils/CustomTextStyle.dart';
 import '../../utils/CustomUtils.dart';
 import '../auth/model/product_list.dart';
 import '../market/model/product.dart';
+import '../market/widget/market_detail.dart';
 import '../market/widget/product_shop_main_detail.dart';
 
 class Home extends StatefulWidget {
@@ -73,9 +74,18 @@ class _HomeState extends State<Home> {
     req.description = data.productDetail;
     req.marketAddress = data.marketAddress;
     req.marketDetail = data.marketDetail;
+    req.marketName = data.marketName;
     req.marketTel = data.marketTel;
+    req.categoryName = data.categoryName;
+    req.sdayName = data.sdayName;
+    req.genderName = data.genderName;
     Navigator.of(context).push(
         MaterialPageRoute(builder: (_) => ProductShopMainDeatil(item: req)));
+  }
+
+  onGoToMarketDeatil(BuildContext context, Market data) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (_) => MArketDetail(item: data)));
   }
 
   List<String> listImage = [];
@@ -338,6 +348,7 @@ class _HomeState extends State<Home> {
       rightMargin = 10;
     }
     return GestureDetector(
+      onTap: () => {onGoToMarketDeatil(context, data)},
       child: Container(
         margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
         decoration: BoxDecoration(
@@ -396,10 +407,6 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      onTap: () {
-        // Navigator.of(context).push(new MaterialPageRoute(
-        //     builder: (context) => ProductDetailsPage("$image,$index")));
-      },
     );
   }
 }

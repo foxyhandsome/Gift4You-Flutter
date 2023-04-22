@@ -19,7 +19,12 @@ class ProductModel {
   String? specialday;
   String? marketName;
   double? price;
-
+  int? genderId;
+  int? categoryId;
+  int? sdayId;
+  String? categoryName;
+  String? genderName;
+  String? sdayName;
   int? marketId;
   String? marketPicture;
   String? marketTel;
@@ -27,24 +32,29 @@ class ProductModel {
   String? marketDetail;
   String? username;
 
-  ProductModel({
-    this.marketId,
-    this.marketPicture,
-    this.marketTel,
-    this.marketAddress,
-    this.marketDetail,
-    this.username,
-    this.id,
-    this.image,
-    this.name,
-    this.size,
-    this.price,
-    this.description,
-    this.category,
-    this.gender,
-    this.specialday,
-    this.marketName,
-  });
+  ProductModel(
+      {this.marketId,
+      this.marketPicture,
+      this.marketTel,
+      this.marketAddress,
+      this.marketDetail,
+      this.username,
+      this.id,
+      this.image,
+      this.name,
+      this.size,
+      this.price,
+      this.description,
+      this.category,
+      this.gender,
+      this.specialday,
+      this.marketName,
+      this.genderId,
+      this.categoryId,
+      this.sdayId,
+      this.categoryName,
+      this.genderName,
+      this.sdayName});
 
   ProductModel.fromMap(Map<String, dynamic> data) {
     id = data[ID];
