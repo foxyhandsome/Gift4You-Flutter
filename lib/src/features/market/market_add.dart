@@ -40,7 +40,7 @@ class _MarketAddState extends State<MarketAdd> {
       "market_id": marketId,
       "category_id": checkCategory(category),
       "gender_id": sex == 0 ? 1 : 2,
-      "sday_id": checkSpecialDay(category),
+      "sday_id": checkSpecialDay(specialday),
     });
     if (response.statusCode == 200) {
       Navigator.of(context).pop();
