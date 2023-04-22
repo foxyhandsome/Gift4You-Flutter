@@ -112,7 +112,23 @@ class _MArketDetailState extends State<MArketDetail> {
                     'ร้าน ${widget.item!.marketName!}',
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                      fontSize: 23,
+                      fontSize: 26,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  Text(
+                    'ที่อยู่ร้านค้า :  ${widget.item!.marketAddress!}',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  Text(
+                    'รายละเอียดร้านค้า :  ${widget.item!.marketDetail!}',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      fontSize: 15,
                       fontWeight: FontWeight.w800,
                     ),
                   ),
