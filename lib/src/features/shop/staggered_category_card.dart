@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
+import 'detail_category.dart';
+
 class CategoryCard extends StatelessWidget {
   final Color begin;
   final Color end;
   final String categoryName;
   final String assetPath;
-
-  CategoryCard({
-    required this.controller,
-    required this.begin,
-    required this.end,
-    required this.categoryName,
-    required this.assetPath,
-  })  : height = Tween<double>(begin: 150, end: 250.0).animate(
+  final int type;
+  CategoryCard(
+      {required this.controller,
+      required this.begin,
+      required this.end,
+      required this.categoryName,
+      required this.assetPath,
+      required this.type})
+      : height = Tween<double>(begin: 150, end: 250.0).animate(
           CurvedAnimation(
             parent: controller,
             curve: Interval(
@@ -37,9 +40,14 @@ class CategoryCard extends StatelessWidget {
   final Animation<double> height;
   final Animation<double> itemHeight;
 
-  // This function is called each time the controller "ticks" a new frame.
-  // When it runs, all of the animation's values will have been
-  // updated to reflect the controller's current value.
+  onGoToDeatil(BuildContext context, int data) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (_) => DetailCategory(
+              name: categoryName,
+              type: data,
+            )));
+  }
+
   Widget _buildAnimation(BuildContext context, Widget? child) {
     return Container(
       height: height.value,
@@ -74,15 +82,18 @@ class CategoryCard extends StatelessWidget {
                   assetPath,
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(24))),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: Text(
-                  'ดูสินค้า',
-                  style: TextStyle(color: end, fontWeight: FontWeight.bold),
+              InkWell(
+                onTap: () => {onGoToDeatil(context, type)},
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(24))),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 8.0),
+                  child: Text(
+                    'ดูสินค้า',
+                    style: TextStyle(color: end, fontWeight: FontWeight.bold),
+                  ),
                 ),
               )
             ],
@@ -106,13 +117,13 @@ class StaggeredCardCard extends StatefulWidget {
   final Color end;
   final String categoryName;
   final String assetPath;
-
-  const StaggeredCardCard({
-    required this.begin,
-    required this.end,
-    required this.categoryName,
-    required this.assetPath,
-  });
+  final int type;
+  const StaggeredCardCard(
+      {required this.begin,
+      required this.end,
+      required this.categoryName,
+      required this.assetPath,
+      required this.type});
 
   @override
   _StaggeredCardCardState createState() => _StaggeredCardCardState();
@@ -162,6 +173,7 @@ class _StaggeredCardCardState extends State<StaggeredCardCard>
         }
       },
       child: CategoryCard(
+        type: widget.type,
         controller: _controller.view,
         categoryName: widget.categoryName,
         begin: widget.begin,

@@ -11,36 +11,16 @@ class CategoryListPage extends StatefulWidget {
 
 class _CategoryListPageState extends State<CategoryListPage> {
   List<Category> categories = [
-    Category(
-      Color(0xffFCE183),
-      Color(0xffF68D7F),
-      'ไอที',
-      'assets/images/it.png',
-    ),
-    Category(
-      Color(0xffF749A2),
-      Color(0xffFF7375),
-      'เสื้อผ้า',
-      'assets/images/Shirt.png',
-    ),
-    Category(
-      Color(0xff00E9DA),
-      Color(0xff5189EA),
-      'เครื่องประดับ',
-      'assets/images/jewelry.png',
-    ),
-    Category(
-      Color(0xffAF2D68),
-      Color(0xff632376),
-      'ของเล่น',
-      'assets/images/toy.png',
-    ),
-    Category(
-      Color(0xff36E892),
-      Color(0xff33B2B9),
-      'ดอกไม้',
-      'assets/images/flower.png',
-    ),
+    Category(Color(0xffFCE183), Color(0xffF68D7F), 'ไอที',
+        'assets/images/it.png', 1),
+    Category(Color(0xffF749A2), Color(0xffFF7375), 'เสื้อผ้า',
+        'assets/images/Shirt.png', 2),
+    Category(Color(0xff00E9DA), Color(0xff5189EA), 'เครื่องประดับ',
+        'assets/images/jewelry.png', 3),
+    Category(Color(0xffAF2D68), Color(0xff632376), 'ของเล่น',
+        'assets/images/toy.png', 4),
+    Category(Color(0xff36E892), Color(0xff33B2B9), 'ดอกไม้',
+        'assets/images/flower.png', 5),
     // Category(
     //   Color(0xffF123C4),
     //   Color(0xff668CEA),
@@ -89,11 +69,14 @@ class _CategoryListPageState extends State<CategoryListPage> {
                   padding: EdgeInsets.symmetric(
                     vertical: 6.0,
                   ),
-                  child: StaggeredCardCard(
-                    begin: searchResults[index].begin,
-                    end: searchResults[index].end,
-                    categoryName: searchResults[index].category,
-                    assetPath: searchResults[index].image,
+                  child: InkWell(
+                    child: StaggeredCardCard(
+                      type: searchResults[index].type,
+                      begin: searchResults[index].begin,
+                      end: searchResults[index].end,
+                      categoryName: searchResults[index].category,
+                      assetPath: searchResults[index].image,
+                    ),
                   ),
                 ),
               ),
