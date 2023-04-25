@@ -54,7 +54,7 @@ class _AddGritState extends State<AddGrit> {
           title: const Text(
             'แนะนำของขวัญ',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 30,
               fontWeight: FontWeight.w800,
             ),
           ),

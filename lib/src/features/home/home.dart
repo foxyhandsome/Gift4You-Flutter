@@ -113,7 +113,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color.fromARGB(248, 245, 168, 255),
+      backgroundColor: Color.fromARGB(248, 255, 255, 255),
       body: Builder(
         builder: (context) {
           return SingleChildScrollView(
@@ -164,21 +164,21 @@ class _HomeState extends State<Home> {
                               fontSize: 23),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(top: 10),
-                        child: Row(
-                          children: <Widget>[
-                            Text("ดูทั้งหมด",
-                                style: CustomTextStyle.textFormFieldSemiBold
-                                    .copyWith(
-                                        color: Color.fromARGB(255, 0, 0, 0),
-                                        fontFamily: 'donut',
-                                        fontSize: 18)),
-                            Icon(Icons.arrow_forward),
-                            Utils.getSizedBox(width: 16),
-                          ],
-                        ),
-                      )
+                      // Container(
+                      //   margin: EdgeInsets.only(top: 10),
+                      //   child: Row(
+                      //     children: <Widget>[
+                      //       Text("ดูทั้งหมด",
+                      //           style: CustomTextStyle.textFormFieldSemiBold
+                      //               .copyWith(
+                      //                   color: Color.fromARGB(255, 0, 0, 0),
+                      //                   fontFamily: 'donut',
+                      //                   fontSize: 18)),
+                      //       Icon(Icons.arrow_forward),
+                      //       Utils.getSizedBox(width: 16),
+                      //     ],
+                      //   ),
+                      // )
                     ],
                   ),
                 ),
@@ -214,21 +214,21 @@ class _HomeState extends State<Home> {
                             fontSize: 23),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 10),
-                      child: Row(
-                        children: <Widget>[
-                          Text("ดูทั้งหมด",
-                              style: CustomTextStyle.textFormFieldSemiBold
-                                  .copyWith(
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                      fontFamily: 'donut',
-                                      fontSize: 18)),
-                          Icon(Icons.arrow_forward),
-                          Utils.getSizedBox(width: 16),
-                        ],
-                      ),
-                    )
+                    // Container(
+                    //   margin: EdgeInsets.only(top: 10),
+                    //   child: Row(
+                    //     children: <Widget>[
+                    //       Text("ดูทั้งหมด",
+                    //           style: CustomTextStyle.textFormFieldSemiBold
+                    //               .copyWith(
+                    //                   color: Color.fromARGB(255, 0, 0, 0),
+                    //                   fontFamily: 'donut',
+                    //                   fontSize: 18)),
+                    //       Icon(Icons.arrow_forward),
+                    //       Utils.getSizedBox(width: 16),
+                    //     ],
+                    //   ),
+                    // )
                   ],
                 ),
                 Utils.getSizedBox(height: 10),

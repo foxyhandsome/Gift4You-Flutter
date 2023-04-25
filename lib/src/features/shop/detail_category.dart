@@ -73,7 +73,7 @@ class _DetailCategoryState extends State<DetailCategory> {
           title: Text(
             'หมวดหมู่${widget.name}',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 30,
               fontWeight: FontWeight.w800,
               fontFamily: 'donut',
             ),

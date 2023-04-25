@@ -66,7 +66,7 @@ class _CustomRadioState extends State<CustomRadio> {
                         : null,
                     size: widget.type == 'radio' ? 16 : 18,
                     color: selected
-                        ? Color.fromARGB(255, 41, 185, 16)
+                        ? Color.fromARGB(255, 255, 0, 0)
                         : Colors.grey[200],
                   )),
               Padding(
@@ -78,7 +78,7 @@ class _CustomRadioState extends State<CustomRadio> {
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 18,
-                          color: Color.fromARGB(255, 209, 97, 23)),
+                          color: Color.fromARGB(255, 0, 0, 0)),
                     ),
                   ],
                 ),
