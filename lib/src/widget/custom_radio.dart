@@ -65,7 +65,9 @@ class _CustomRadioState extends State<CustomRadio> {
                             : Icons.check_box)
                         : null,
                     size: widget.type == 'radio' ? 16 : 18,
-                    color: selected ? Color(0xff7C6E65) : Colors.grey[200],
+                    color: selected
+                        ? Color.fromARGB(255, 41, 185, 16)
+                        : Colors.grey[200],
                   )),
               Padding(
                 padding: EdgeInsets.only(left: 16),
@@ -76,7 +78,7 @@ class _CustomRadioState extends State<CustomRadio> {
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 18,
-                          color: Color(0xff695D55)),
+                          color: Color.fromARGB(255, 209, 97, 23)),
                     ),
                   ],
                 ),

@@ -21,12 +21,6 @@ class _CategoryListPageState extends State<CategoryListPage> {
         'assets/images/toy.png', 4),
     Category(Color(0xff36E892), Color(0xff33B2B9), 'ดอกไม้',
         'assets/images/flower.png', 5),
-    // Category(
-    //   Color(0xffF123C4),
-    //   Color(0xff668CEA),
-    //   'Appliances',
-    //   'assets/shoe_thumb_2.png',
-    // ),
   ];
 
   List<Category> searchResults = [];

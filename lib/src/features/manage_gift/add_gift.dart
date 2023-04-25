@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import '../../widget/custom_radio.dart';
-import 'check_box.dart';
+import 'deatil_gift.dart';
 
 class AddGrit extends StatefulWidget {
   const AddGrit({super.key});
@@ -13,52 +13,18 @@ class AddGrit extends StatefulWidget {
 }
 
 class _AddGritState extends State<AddGrit> {
-  List<CheckProduct>? listCheckbox1 = [
-    CheckProduct(
-      name: "วันฮาโลวีน",
-      value: 0,
-    ),
-    CheckProduct(
-      name: "วันเเห่งความรัก",
-      value: 0,
-    ),
-    CheckProduct(
-      name: "วันเด็ก",
-      value: 0,
-    ),
-    CheckProduct(
-      name: "วันเกิด",
-      value: 0,
-    ),
-    CheckProduct(
-      name: "วันสงกรานต์",
-      value: 0,
-    ),
-  ];
+  int category = 1;
+  int gender = 1;
+  int specialday = 1;
 
-  List<CheckProduct>? listCheckbox2 = [
-    CheckProduct(
-      name: "ไอที",
-      value: 0,
-    ),
-    CheckProduct(
-      name: "เสื้อผ้า",
-      value: 0,
-    ),
-    CheckProduct(
-      name: "เครื่องประดับ",
-      value: 0,
-    ),
-    CheckProduct(
-      name: "ของเล่น",
-      value: 0,
-    ),
-    CheckProduct(
-      name: "ดอกไม้",
-      value: 0,
-    ),
-  ];
-  int sex = 0;
+  onGoToDeatil(BuildContext context, int category, int gender, int specialday) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (_) => DeatilGift(
+              category: category,
+              gender: gender,
+              specialday: specialday,
+            )));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,31 +82,68 @@ class _AddGritState extends State<AddGrit> {
                 ),
               ],
             ),
-            ...List.generate(listCheckbox1!.length, ((index) {
-              return Column(
-                children: [
-                  CustomRadio(
-                    type: 'checkbox',
-                    name: listCheckbox1![index].name.toString(),
-                    value: 1,
-                    groupValue: listCheckbox1![index].value,
-                    onChanged: (value, name) {
-                      setState(() {
-                        if (listCheckbox1![index].value == value) {
-                          listCheckbox1![index].value =
-                              listCheckbox1![index].value == 0 ? 1 : 0;
-                        } else {
-                          listCheckbox1![index].value = value;
-                        }
-                      });
-                    },
-                  ),
-                  SizedBox(
-                    height: 7,
-                  ),
-                ],
-              );
-            })),
+            CustomRadio(
+              name: 'วันฮาโลวีน',
+              value: 1,
+              groupValue: specialday,
+              onChanged: (value, name) {
+                setState(() {
+                  specialday = value;
+                });
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            CustomRadio(
+              name: 'วันเเห่งความรัก',
+              value: 2,
+              groupValue: specialday,
+              onChanged: (value, name) {
+                setState(() {
+                  specialday = value;
+                });
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            CustomRadio(
+              name: 'วันเด็ก',
+              value: 3,
+              groupValue: specialday,
+              onChanged: (value, name) {
+                setState(() {
+                  specialday = value;
+                });
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            CustomRadio(
+              name: 'วันเกิด',
+              value: 4,
+              groupValue: specialday,
+              onChanged: (value, name) {
+                setState(() {
+                  specialday = value;
+                });
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            CustomRadio(
+              name: 'วันสงกรานต์',
+              value: 5,
+              groupValue: specialday,
+              onChanged: (value, name) {
+                setState(() {
+                  specialday = value;
+                });
+              },
+            ),
             SizedBox(
               height: 7,
             ),
@@ -157,11 +160,11 @@ class _AddGritState extends State<AddGrit> {
             ),
             CustomRadio(
               name: 'ชาย',
-              value: 0,
-              groupValue: sex,
+              value: 1,
+              groupValue: gender,
               onChanged: (value, name) {
                 setState(() {
-                  sex = value;
+                  gender = value;
                 });
               },
             ),
@@ -170,11 +173,11 @@ class _AddGritState extends State<AddGrit> {
             ),
             CustomRadio(
               name: 'หญิง',
-              value: 1,
-              groupValue: sex,
+              value: 2,
+              groupValue: gender,
               onChanged: (value, name) {
                 setState(() {
-                  sex = value;
+                  gender = value;
                 });
               },
             ),
@@ -192,33 +195,96 @@ class _AddGritState extends State<AddGrit> {
                 ),
               ],
             ),
-            ...List.generate(listCheckbox2!.length, ((index) {
-              return Column(
-                children: [
-                  CustomRadio(
-                    type: 'checkbox',
-                    name: listCheckbox2![index].name.toString(),
-                    value: 1,
-                    groupValue: listCheckbox2![index].value,
-                    onChanged: (value, name) {
-                      setState(() {
-                        if (listCheckbox2![index].value == value) {
-                          listCheckbox2![index].value =
-                              listCheckbox2![index].value == 0 ? 1 : 0;
-                        } else {
-                          listCheckbox2![index].value = value;
-                        }
-                      });
-                    },
-                  ),
-                  SizedBox(
-                    height: 7,
-                  ),
-                ],
-              );
-            })),
+            CustomRadio(
+              name: 'ไอที',
+              value: 1,
+              groupValue: category,
+              onChanged: (value, name) {
+                setState(() {
+                  category = value;
+                });
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            CustomRadio(
+              name: 'เสื้อผ้า',
+              value: 2,
+              groupValue: category,
+              onChanged: (value, name) {
+                setState(() {
+                  category = value;
+                });
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            CustomRadio(
+              name: 'เครื่องประดับ',
+              value: 3,
+              groupValue: category,
+              onChanged: (value, name) {
+                setState(() {
+                  category = value;
+                });
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            CustomRadio(
+              name: 'ของเล่น',
+              value: 4,
+              groupValue: category,
+              onChanged: (value, name) {
+                setState(() {
+                  category = value;
+                });
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            CustomRadio(
+              name: 'ดอกไม้',
+              value: 5,
+              groupValue: category,
+              onChanged: (value, name) {
+                setState(() {
+                  category = value;
+                });
+              },
+            ),
             SizedBox(
               height: 20,
+            ),
+            InkWell(
+              onTap: () =>
+                  {onGoToDeatil(context, category, gender, specialday)},
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(6)),
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color.fromARGB(241, 211, 145, 255),
+                          Color.fromARGB(241, 211, 145, 255),
+                        ])),
+                height: 40,
+                width: double.infinity,
+                child: Text(
+                  'ค้นหา',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w800),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 40,
             ),
           ],
         )),

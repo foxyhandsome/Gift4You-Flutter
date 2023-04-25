@@ -26,8 +26,7 @@ class _HomeState extends State<Home> {
   List<ProductList> data = [];
 
   productload() async {
-    final response =
-        await dio.post('${host}/list-product', data: {"username": "TonUser"});
+    final response = await dio.post('${host}/list-product', data: {});
     if (response.statusCode == 200) {
       response.data.forEach((element) {
         data.add(ProductList.fromJson(element));
@@ -43,8 +42,7 @@ class _HomeState extends State<Home> {
   }
 
   market() async {
-    final response =
-        await dio.post('${host}/list-market', data: {"username": "TonUser"});
+    final response = await dio.post('${host}/list-market', data: {});
     if (response.statusCode == 200) {
       response.data.forEach((element) {
         marketDataList.add(Market.fromJson(element));
